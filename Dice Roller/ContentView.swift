@@ -75,7 +75,7 @@ struct ContentView: View {
                                     .frame(maxWidth: .infinity, maxHeight: 50)
                             }
                             .buttonStyle(.borderedProminent)
-                            .tint(.gray)
+                            .tint(.secondary)
                         }
                     }
                 }
@@ -106,7 +106,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.gray)
+        .tint(.orange)
     }
 
     private func btnClear_Click() {

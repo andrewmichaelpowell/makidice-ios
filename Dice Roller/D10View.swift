@@ -51,6 +51,12 @@ struct D10View: View {
                 VStack {
                     Spacer()
                     HStack {
+                        btnDiePool
+                        btnDifficulty
+                    }
+
+                    Spacer()
+                    HStack {
                         btnNumber(1)
                         btnNumber(2)
                         btnNumber(3)
@@ -69,11 +75,6 @@ struct D10View: View {
                         btnNumber(10)
                         btnClear
                         btnRoll
-                    }
-                    Spacer()
-                    HStack {
-                        btnDiePool
-                        btnDifficulty
                     }
                 }
                 .padding()
@@ -132,7 +133,7 @@ struct D10View: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.gray)
+        .tint(.orange)
     }
 
     private func btnClear_Click() {
@@ -163,28 +164,50 @@ struct D10View: View {
     }
     
     private var btnDiePool: some View {
-        Button(action: btnDiePool_Click) {
-            Text("Die Pool")
-                .font(.title)
-                .frame(maxWidth: .infinity, maxHeight: 50)
+        if (Side == 1) {
+            Button(action: btnDiePool_Click) {
+                Text("Die Pool")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.orange)
         }
-        .buttonStyle(.borderedProminent)
-        .tint(.gray)
+        else {
+            Button(action: btnDiePool_Click) {
+                Text("Die Pool")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.secondary)
+        }
     }
 
-    
     private func btnDiePool_Click() {
         Side = 1;
     }
 
     private var btnDifficulty: some View {
-        Button(action: btnDifficulty_Click) {
-            Text("Difficulty")
-                .font(.title)
-                .frame(maxWidth: .infinity, maxHeight: 50)
+        if (Side == 2) {
+            Button(action: btnDifficulty_Click) {
+                Text("Difficulty")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.orange)
         }
-        .buttonStyle(.borderedProminent)
-        .tint(.gray)
+        else {
+            Button(action: btnDifficulty_Click) {
+                Text("Difficulty")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.secondary)
+
+        }
     }
 
     private func btnDifficulty_Click() {
