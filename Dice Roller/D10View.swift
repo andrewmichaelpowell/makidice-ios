@@ -11,50 +11,67 @@ struct D10View: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 10) {
+            VStack {
+                Spacer()
+                HStack {
+                    lblDiePool
+                    Text(String(DiePool))
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.2)
+                }
+                .padding()
+                HStack {
+                    lblDifficulty
+                    Text(String(Difficulty))
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.2)
+                }
+                .padding()
+                HStack {
+                    Text("Successes")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.2)
+                    Text(String(DisplayResult))
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.2)
+                }
+                .padding()
+                VStack {
                     Spacer()
-                    HStack(spacing: 10) {
-                        Text("Die Pool: " + String(DiePool))
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
-                        Spacer()
-                    }
-                    HStack(spacing: 10) {
-                        Text("Difficulty: " + String(Difficulty))
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
-                        Spacer()
-                    }
-                    HStack(spacing: 10) {
-                        Text("Successes: " + String(DisplayResult))
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
-                        Spacer()
-                    }
-                    Spacer()
-                    HStack(spacing: 10) {
+                    HStack {
                         btnNumber(1)
                         btnNumber(2)
                         btnNumber(3)
                     }
-                    HStack(spacing: 10) {
+                    HStack {
                         btnNumber(4)
                         btnNumber(5)
                         btnNumber(6)
                     }
-                    HStack(spacing: 10) {
+                    HStack {
                         btnNumber(7)
                         btnNumber(8)
                         btnNumber(9)
                     }
-                    HStack(spacing: 10) {
+                    HStack {
                         btnNumber(10)
                         btnClear
                         btnRoll
                     }
                     Spacer()
-                    HStack(spacing: 10) {
+                    HStack {
                         btnDiePool
                         btnDifficulty
                     }
@@ -65,6 +82,49 @@ struct D10View: View {
         }
     }
     
+    private var lblDiePool: some View {
+        if (Side == 1) {
+            Text("Die Pool")
+                .font(.largeTitle)
+                .foregroundColor(.orange)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+
+        }
+        else {
+            Text("Die Pool")
+                .font(.largeTitle)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+
+        }
+    }
+
+    private var lblDifficulty: some View {
+        if (Side == 2) {
+            Text("Difficulty")
+                .font(.largeTitle)
+                .foregroundColor(.orange)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+
+        }
+        else {
+            Text("Difficulty")
+                .font(.largeTitle)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+
+        }
+    }
+
+    
     private var btnClear: some View {
         Button(action: btnClear_Click) {
             Text("Clear")
@@ -72,7 +132,7 @@ struct D10View: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.orange)
+        .tint(.gray)
     }
 
     private func btnClear_Click() {
@@ -99,7 +159,7 @@ struct D10View: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.gray)
+        .tint(.secondary)
     }
     
     private var btnDiePool: some View {
@@ -109,7 +169,7 @@ struct D10View: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.orange)
+        .tint(.gray)
     }
 
     
@@ -124,7 +184,7 @@ struct D10View: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.orange)
+        .tint(.gray)
     }
 
     private func btnDifficulty_Click() {

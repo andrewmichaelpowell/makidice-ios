@@ -20,74 +20,66 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing:10) {
+                VStack {
                     Spacer()
-                    HStack(spacing: 10) {
-                        Spacer()
-                        Text("Dice Roller")
-                            .font(.largeTitle)
-                            .foregroundColor(.black)
-                    }
-                    Spacer()
-                    HStack(spacing: 10) {
-                        Spacer()
-                        Text(DisplayResult)
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
-                    }
-                    Spacer()
-                    HStack(spacing: 10) {
-                        btnQuick(4)
-                        btnQuick(6)
-                    }
-                    HStack(spacing: 10) {
-                        btnQuick(8)
-                        btnQuick(10)
-                    }
-                    HStack(spacing: 10) {
-                        btnQuick(12)
-                        btnQuick(20)
-                    }
-                    HStack(spacing: 10) {
-                        btnQuick(100)
-                        btnClear
-                    }
-                    Spacer()
-                    HStack(spacing: 10) {
-                        btnNumber(1)
-                        btnNumber(2)
-                        btnNumber(3)
-                    }
-                    HStack(spacing: 10) {
-                        btnNumber(4)
-                        btnNumber(5)
-                        btnNumber(6)
-                    }
-                    HStack(spacing: 10) {
-                        btnNumber(7)
-                        btnNumber(8)
-                        btnNumber(9)
-                    }
-                    HStack(spacing: 10) {
-                        btnZero
-                        btnD
-                        btnRoll
-                    }
-                    Spacer()
-                    HStack(spacing: 10) {
-                        NavigationLink(destination: D10View()) {
-                            Text("D10 System")
-                                .font(.title)
-                                .frame(maxWidth: .infinity, maxHeight: 50)
-                                .backgroundStyle(.orange)
+                       Text(DisplayResult)
+                        .padding()
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.2)
+                    VStack {
+                        HStack {
+                            btnQuick(4)
+                            btnQuick(6)
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.orange)
+                        HStack {
+                            btnQuick(8)
+                            btnQuick(10)
+                        }
+                        HStack {
+                            btnQuick(12)
+                            btnQuick(20)
+                        }
+                        HStack {
+                            btnQuick(100)
+                            btnClear
+                        }
+                        Spacer()
+                        HStack {
+                            btnNumber(1)
+                            btnNumber(2)
+                            btnNumber(3)
+                        }
+                        HStack {
+                            btnNumber(4)
+                            btnNumber(5)
+                            btnNumber(6)
+                        }
+                        HStack {
+                            btnNumber(7)
+                            btnNumber(8)
+                            btnNumber(9)
+                        }
+                        HStack {
+                            btnZero
+                            btnD
+                            btnRoll
+                        }
+                        Spacer()
+                        HStack {
+                            NavigationLink(destination: D10View()) {
+                                Text("D10 System")
+                                    .font(.title)
+                                    .frame(maxWidth: .infinity, maxHeight: 50)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .tint(.gray)
+                        }
                     }
                 }
                 .padding()
-            }
                 .background(.black)
         }
     }
@@ -104,7 +96,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.gray)
+        .tint(.secondary)
     }
     
     private var btnClear: some View {
@@ -114,7 +106,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.orange)
+        .tint(.gray)
     }
 
     private func btnClear_Click() {
@@ -167,7 +159,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.gray)
+        .tint(.secondary)
     }
     
     private var btnZero: some View {
@@ -177,7 +169,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.gray)
+        .tint(.secondary)
     }
     
     private func btnZero_Click() {
