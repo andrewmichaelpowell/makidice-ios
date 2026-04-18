@@ -1,4 +1,4 @@
-Dice Roller
+Diecast
 
 This applications allows you to roll dice for tabletop role-playing games. It features buttons for each of the standard polyhedral dice, as well as a number pad for entering custom rolls. There is also a tool for use with games that incorporate a D10 die pool + difficulty system.
 
