@@ -2,8 +2,8 @@ import SwiftUI
 
 struct D10View: View {
     
-    @State private var DisplayResult:Int = 0;
-    @State private var DiePool:Int = 0;
+    @State private var DisplayResult:String = "0";
+    @State private var Dice:Int = 0;
     @State private var Difficulty:Int = 0;
     @State private var Successes:Int = 0;
     @State private var Side:Int = 1;
@@ -15,7 +15,7 @@ struct D10View: View {
                 Spacer()
                 HStack {
                     lblDiePool
-                    Text(String(DiePool))
+                    Text(String(Dice))
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, alignment: .trailing)
@@ -140,15 +140,15 @@ struct D10View: View {
 
     private func btnClear_Click() {
         Side = 1;
-        DisplayResult = 0;
-        DiePool = 0;
+        DisplayResult = "0";
+        Dice = 0;
         Difficulty = 0;
         Successes = 0;
     }
         
     private func AddValueToSide (ButtonValue: Int) {
         if (Side == 1) {
-            DiePool = ButtonValue;
+            Dice = ButtonValue;
         }
         if (Side == 2) {
             Difficulty = ButtonValue;
@@ -239,9 +239,9 @@ struct D10View: View {
     }
     
     private func btnRoll_Click() {
-        if ((DiePool != 0) && (Difficulty != 0)) {
+        if ((Dice != 0) && (Difficulty != 0)) {
             Successes = 0;
-            for _ in 1...DiePool {
+            for _ in 1...Dice {
                 RollResult = Int.random(in: 1...10);
                 if (RollResult == 1) {
                     Successes = Successes - 1;
@@ -253,7 +253,10 @@ struct D10View: View {
                     Successes = Successes + 1;
                 }
             }
-            DisplayResult = Successes;
+            DisplayResult = "⚄";
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+                DisplayResult = String(Successes);
+            }
         }
     }
 }

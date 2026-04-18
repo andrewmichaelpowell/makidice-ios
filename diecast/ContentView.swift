@@ -86,13 +86,8 @@ struct ContentView: View {
         }
     }
     
-    private func RollDice(DieType: Int) {
-        RollResult = Int.random(in: 1...DieType)
-        DisplayResult = String(RollResult)
-    }
-    
     private func btnQuick(_ digit: Int) -> some View {
-        Button(action: { RollDice(DieType: digit) }) {
+        Button(action: { QuickRoll(DieType: digit) }) {
             Text("1d" + String(digit))
                 .font(.title)
                 .frame(maxWidth: .infinity, maxHeight: 50)
@@ -101,6 +96,14 @@ struct ContentView: View {
         }
         .buttonStyle(.borderedProminent)
         .tint(.secondary)
+    }
+    
+    private func QuickRoll(DieType: Int) {
+        RollResult = Int.random(in: 1...DieType);
+        DisplayResult = "⚄";
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+            DisplayResult = String(RollResult);
+        }
     }
     
     private var btnClear: some View {
@@ -232,7 +235,10 @@ struct ContentView: View {
             for _ in 1...Int(LeftValue)! {
                 RollResult = RollResult + Int.random(in: 1...Int(RightValue)!);
             }
-            DisplayResult = String(RollResult);
+            DisplayResult = "⚄";
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+                DisplayResult = String(RollResult);
+            }
             Side = 1;
             Reset = 1;
         }
