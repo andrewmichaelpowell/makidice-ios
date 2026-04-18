@@ -1,0 +1,264 @@
+//  Diecast
+//  github.com/andrewmichaelpowell
+
+import SwiftUI
+
+struct vwD10: View {
+    
+    @State private var lblSuccesses:String = "0";
+    @State private var Dice:Int = 0;
+    @State private var Difficulty:Int = 0;
+    @State private var Successes:Int = 0;
+    @State private var Side:Int = 1;
+    @State private var RollResult:Int = 0;
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Spacer()
+                HStack {
+                    lblDice
+                    Text(String(Dice))
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.2)
+                }
+                .padding(.horizontal)
+                HStack {
+                    lblDifficulty
+                    Text(String(Difficulty))
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.2)
+                }
+                .padding(.horizontal)
+                HStack {
+                    Text("Successes")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.2)
+                    Text(String(lblSuccesses))
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.2)
+                }
+                .padding(.horizontal)
+                    HStack {
+                        btnDice
+                        btnDifficulty
+                    }
+                    .padding()
+                    HStack {
+                        btnNumber(1)
+                        btnNumber(2)
+                        btnNumber(3)
+                    }
+                    .padding(.horizontal)
+                    HStack {
+                        btnNumber(4)
+                        btnNumber(5)
+                        btnNumber(6)
+                    }
+                    .padding(.horizontal)
+                    HStack {
+                        btnNumber(7)
+                        btnNumber(8)
+                        btnNumber(9)
+                    }
+                    .padding(.horizontal)
+                HStack {
+                        btnNumber(10)
+                        btnClear
+                        btnRoll
+                    }
+                    .padding(.horizontal)
+            }
+            .background(.black)
+        }
+    }
+    
+    private var lblDice: some View {
+        if (Side == 1) {
+            Text("Dice")
+                .font(.largeTitle)
+                .foregroundColor(.orange)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+
+        }
+        else {
+            Text("Dice")
+                .font(.largeTitle)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+
+        }
+    }
+
+    private var lblDifficulty: some View {
+        if (Side == 2) {
+            Text("Difficulty")
+                .font(.largeTitle)
+                .foregroundColor(.orange)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+
+        }
+        else {
+            Text("Difficulty")
+                .font(.largeTitle)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+
+        }
+    }
+
+    
+    private var btnClear: some View {
+        Button(action: btnClear_Click) {
+            Text("Clear")
+                .font(.title)
+                .frame(maxWidth: .infinity, maxHeight: 50)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.orange)
+    }
+
+    private func btnClear_Click() {
+        Side = 1;
+        lblSuccesses = "0";
+        Dice = 0;
+        Difficulty = 0;
+        Successes = 0;
+    }
+        
+    private func AddValueToSide (ButtonValue: Int) {
+        if (Side == 1) {
+            Dice = ButtonValue;
+        }
+        if (Side == 2) {
+            Difficulty = ButtonValue;
+        }
+    }
+    
+    private func btnNumber(_ digit: Int) -> some View {
+        Button(action: { AddValueToSide(ButtonValue: digit)}) {
+            Text(String(digit))
+                .font(.title)
+                .frame(maxWidth: .infinity, maxHeight: 50)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.secondary)
+    }
+    
+    private var btnDice: some View {
+        if (Side == 1) {
+            Button(action: btnDice_Click) {
+                Text("Dice")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.2)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.orange)
+        }
+        else {
+            Button(action: btnDice_Click) {
+                Text("Dice")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.2)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.secondary)
+        }
+    }
+
+    private func btnDice_Click() {
+        Side = 1;
+    }
+
+    private var btnDifficulty: some View {
+        if (Side == 2) {
+            Button(action: btnDifficulty_Click) {
+                Text("Difficulty")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.2)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.orange)
+        }
+        else {
+            Button(action: btnDifficulty_Click) {
+                Text("Difficulty")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.2)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.secondary)
+
+        }
+    }
+
+    private func btnDifficulty_Click() {
+        Side = 2;
+    }
+        
+    private var btnRoll: some View {
+        Button(action: btnRoll_Click) {
+            Text("Roll")
+                .font(.title)
+                .frame(maxWidth: .infinity, maxHeight: 50)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.orange)
+    }
+    
+    private func btnRoll_Click() {
+        if ((Dice != 0) && (Difficulty != 0)) {
+            Successes = 0;
+            for _ in 1...Dice {
+                RollResult = Int.random(in: 1...10);
+                if (RollResult == 1) {
+                    Successes = Successes - 1;
+                }
+                else if (RollResult == 10) {
+                    Successes = Successes + 2;
+                }
+                else if (RollResult >= Difficulty) {
+                    Successes = Successes + 1;
+                }
+            }
+            lblSuccesses = "⚄";
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+                lblSuccesses = String(Successes);
+            }
+        }
+    }
+}
