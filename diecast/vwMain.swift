@@ -11,8 +11,6 @@ struct vwMain: View {
     @State private var LeftValue:String = "";
     @State private var RightValue:String = "";
     @State private var RollResult:Int = 0;
-    @State private var showAlert = false
-    @State private var alertMessage = ""
     
     var body: some View {
         NavigationView {
