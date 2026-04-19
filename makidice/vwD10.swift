@@ -84,6 +84,7 @@ struct vwD10: View {
                     .padding(.horizontal)
             }
             .background(.black)
+            .preferredColorScheme(.dark)
         }
     }
     

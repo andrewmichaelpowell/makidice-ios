@@ -73,6 +73,7 @@ struct vwMain: View {
             }
             .padding(.horizontal)
             .background(.black)
+            .preferredColorScheme(.dark)
         }
     }
     
