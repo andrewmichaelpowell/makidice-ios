@@ -77,7 +77,7 @@ struct vwMain: View {
     }
     
     private func btnQuick(_ digit: Int) -> some View {
-        Button(action: { QuickRoll(DieType: digit) }) {
+        Button(action: {QuickRoll(DieType: digit)}) {
             Text("1d" + String(digit))
                 .font(.title)
                 .frame(maxWidth: .infinity, maxHeight: 50)
@@ -155,7 +155,7 @@ struct vwMain: View {
     }
     
     private func btnNumber(_ digit: Int) -> some View {
-        Button(action: { AddValueToSide(ButtonValue: digit)}) {
+        Button(action: {AddValueToSide(ButtonValue: digit)}) {
             Text(String(digit))
                 .font(.title)
                 .frame(maxWidth: .infinity, maxHeight: 50)
