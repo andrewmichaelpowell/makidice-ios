@@ -5,7 +5,9 @@ import SwiftUI
 
 struct vwD10: View {
     
-    @State private var lblSuccesses:String = "0";
+    @State private var valDice:String = "0";
+    @State private var valDifficulty:String = "0";
+    @State private var valSuccesses:String = "0";
     @State private var Dice:Int = 0;
     @State private var Difficulty:Int = 0;
     @State private var Successes:Int = 0;
@@ -18,7 +20,7 @@ struct vwD10: View {
                 Spacer()
                 HStack {
                     lblDice
-                    Text(String(Dice))
+                    Text(valDice)
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, alignment: .trailing)
@@ -28,7 +30,7 @@ struct vwD10: View {
                 .padding(.horizontal)
                 HStack {
                     lblDifficulty
-                    Text(String(Difficulty))
+                    Text(valDifficulty)
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, alignment: .trailing)
@@ -43,7 +45,7 @@ struct vwD10: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineLimit(1)
                         .minimumScaleFactor(0.2)
-                    Text(String(lblSuccesses))
+                    Text(valSuccesses)
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity, alignment: .trailing)
@@ -89,7 +91,7 @@ struct vwD10: View {
         if (Side == 1) {
             Text("Dice")
                 .font(.largeTitle)
-                .foregroundColor(.orange)
+                .foregroundColor(.teal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)
@@ -110,7 +112,7 @@ struct vwD10: View {
         if (Side == 2) {
             Text("Difficulty")
                 .font(.largeTitle)
-                .foregroundColor(.orange)
+                .foregroundColor(.teal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)
@@ -127,7 +129,6 @@ struct vwD10: View {
         }
     }
 
-    
     private var btnClear: some View {
         Button(action: btnClear_Click) {
             Text("Clear")
@@ -141,24 +142,32 @@ struct vwD10: View {
     }
 
     private func btnClear_Click() {
-        Side = 1;
-        lblSuccesses = "0";
         Dice = 0;
         Difficulty = 0;
         Successes = 0;
+        valDice = "";
+        valDifficulty = "";
+        valSuccesses = "";
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+            valDice = "0";
+            valDifficulty = "0";
+            valSuccesses = "0";
+        }
     }
         
     private func AddValueToSide (ButtonValue: Int) {
         if (Side == 1) {
             Dice = ButtonValue;
+            valDice = (String(Dice));
         }
         if (Side == 2) {
             Difficulty = ButtonValue;
+            valDifficulty = (String(Difficulty));
         }
     }
     
     private func btnNumber(_ digit: Int) -> some View {
-        Button(action: { AddValueToSide(ButtonValue: digit)}) {
+        Button(action: {AddValueToSide(ButtonValue: digit)}) {
             Text(String(digit))
                 .font(.title)
                 .frame(maxWidth: .infinity, maxHeight: 50)
@@ -179,7 +188,7 @@ struct vwD10: View {
                     .minimumScaleFactor(0.2)
             }
             .buttonStyle(.borderedProminent)
-            .tint(.orange)
+            .tint(.teal)
         }
         else {
             Button(action: btnDice_Click) {
@@ -208,7 +217,7 @@ struct vwD10: View {
                     .minimumScaleFactor(0.2)
             }
             .buttonStyle(.borderedProminent)
-            .tint(.orange)
+            .tint(.teal)
         }
         else {
             Button(action: btnDifficulty_Click) {
@@ -255,9 +264,9 @@ struct vwD10: View {
                     Successes = Successes + 1;
                 }
             }
-            lblSuccesses = "⚄";
+            valSuccesses = "";
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
-                lblSuccesses = String(Successes);
+                valSuccesses = String(Successes);
             }
         }
     }

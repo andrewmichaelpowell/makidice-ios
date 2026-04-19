@@ -91,27 +91,6 @@
 			knownRegions = (
 				en,
 				Base,
-				gu,
-				bn,
-				ta,
-				pa,
-				te,
-				mr,
-				kn,
-				fil,
-				et,
-				lv,
-				mt,
-				ka,
-				ms,
-				ml,
-				af,
-				hy,
-				az,
-				kk,
-				pt,
-				sw,
-				ig,
 			);
 			mainGroup = 3E1F17782F938D4B00DDE7E4;
 			minimizedProjectReferenceProxies = 1;

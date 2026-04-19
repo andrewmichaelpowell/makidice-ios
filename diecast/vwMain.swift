@@ -5,7 +5,7 @@ import SwiftUI
 
 struct vwMain: View {
     
-    @State private var lblResult:String = "0"
+    @State private var valResult:String = "0"
     @State private var Side:Int = 1;
     @State private var Reset:Int = 1;
     @State private var LeftValue:String = "";
@@ -16,7 +16,7 @@ struct vwMain: View {
         NavigationView {
             VStack {
                 Spacer()
-                   Text(lblResult)
+                   Text(valResult)
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .trailing)
@@ -90,9 +90,9 @@ struct vwMain: View {
     
     private func QuickRoll(DieType: Int) {
         RollResult = Int.random(in: 1...DieType);
-        lblResult = "⚄";
+        valResult = "";
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
-            lblResult = String(RollResult);
+            valResult = String(RollResult);
         }
     }
     
@@ -112,17 +112,20 @@ struct vwMain: View {
         Side = 1;
         LeftValue = "";
         RightValue = "";
-        lblResult = "0";
+        valResult = "";
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+            valResult = "0";
+        }
     }
     
     private func SetRight(ButtonValue: Int) {
         if (RightValue == "") {
             RightValue = RightValue + String(ButtonValue);
-            lblResult = LeftValue + "d" + RightValue;
+            valResult = LeftValue + "d" + RightValue;
         }
         else if (RightValue.count < 3) {
             RightValue = RightValue + String(ButtonValue);
-            lblResult = LeftValue + "d" + RightValue;
+            valResult = LeftValue + "d" + RightValue;
         }
     }
 
@@ -134,11 +137,11 @@ struct vwMain: View {
         }
         if (LeftValue == "") {
             LeftValue = LeftValue + String(ButtonValue);
-            lblResult = LeftValue;
+            valResult = LeftValue;
         }
         else if (LeftValue.count < 3) {
             LeftValue = LeftValue + String(ButtonValue);
-            lblResult = LeftValue;
+            valResult = LeftValue;
         }
     }
     
@@ -203,7 +206,7 @@ struct vwMain: View {
     private func btnD_Click() {
         if ((Side == 1) && (Reset == 0)) {
             Side = 2;
-            lblResult = LeftValue + "d";
+            valResult = LeftValue + "d";
         }
     }
     
@@ -225,9 +228,9 @@ struct vwMain: View {
             for _ in 1...Int(LeftValue)! {
                 RollResult = RollResult + Int.random(in: 1...Int(RightValue)!);
             }
-            lblResult = "⚄";
+            valResult = "";
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
-                lblResult = String(RollResult);
+                valResult = String(RollResult);
             }
             Side = 1;
             Reset = 1;
