@@ -14,6 +14,10 @@ struct vwD10: View {
     @State private var Side:Int = 1;
     @State private var RollResult:Int = 0;
     
+    let clr1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
+    let clr2 = Color(red: 248/255.0, green: 145/255.0, blue: 58/255.0, opacity: 1.0)
+    let clr3 = Color(red: 61/255.0, green: 193/255.0, blue: 207/255.0, opacity: 1.0)
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -92,7 +96,7 @@ struct vwD10: View {
         if (Side == 1) {
             Text("Dice")
                 .font(.largeTitle)
-                .foregroundColor(.teal)
+                .foregroundColor(clr3)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)
@@ -113,7 +117,7 @@ struct vwD10: View {
         if (Side == 2) {
             Text("Difficulty")
                 .font(.largeTitle)
-                .foregroundColor(.teal)
+                .foregroundColor(clr3)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)
@@ -139,7 +143,7 @@ struct vwD10: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.orange)
+        .tint(clr2)
     }
 
     private func btnClear_Click() {
@@ -176,7 +180,7 @@ struct vwD10: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.secondary)
+        .tint(clr1)
     }
     
     private var btnDice: some View {
@@ -189,7 +193,7 @@ struct vwD10: View {
                     .minimumScaleFactor(0.2)
             }
             .buttonStyle(.borderedProminent)
-            .tint(.teal)
+            .tint(clr3)
         }
         else {
             Button(action: btnDice_Click) {
@@ -200,7 +204,7 @@ struct vwD10: View {
                     .minimumScaleFactor(0.2)
             }
             .buttonStyle(.borderedProminent)
-            .tint(.secondary)
+            .tint(clr1)
         }
     }
 
@@ -218,7 +222,7 @@ struct vwD10: View {
                     .minimumScaleFactor(0.2)
             }
             .buttonStyle(.borderedProminent)
-            .tint(.teal)
+            .tint(clr3)
         }
         else {
             Button(action: btnDifficulty_Click) {
@@ -229,8 +233,7 @@ struct vwD10: View {
                     .minimumScaleFactor(0.2)
             }
             .buttonStyle(.borderedProminent)
-            .tint(.secondary)
-
+            .tint(clr1)
         }
     }
 
@@ -247,7 +250,7 @@ struct vwD10: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.orange)
+        .tint(clr2)
     }
     
     private func btnRoll_Click() {

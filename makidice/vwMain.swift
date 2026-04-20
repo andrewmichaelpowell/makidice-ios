@@ -12,6 +12,10 @@ struct vwMain: View {
     @State private var RightValue:String = "";
     @State private var RollResult:Int = 0;
     
+    let clr1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
+    let clr2 = Color(red: 248/255.0, green: 145/255.0, blue: 58/255.0, opacity: 1.0)
+    let clr3 = Color(red: 61/255.0, green: 193/255.0, blue: 207/255.0, opacity: 1.0)
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -44,7 +48,7 @@ struct vwMain: View {
                                 .minimumScaleFactor(0.2)
                         }
                         .buttonStyle(.borderedProminent)
-                        .tint(.teal)
+                        .tint(clr3)
                     }
                 }
                 .padding(.vertical)
@@ -86,7 +90,7 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.secondary)
+        .tint(clr1)
     }
     
     private func QuickRoll(DieType: Int) {
@@ -106,7 +110,7 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.orange)
+        .tint(clr2)
     }
 
     private func btnClear_Click() {
@@ -164,7 +168,7 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.secondary)
+        .tint(clr1)
     }
     
     private var btnZero: some View {
@@ -176,7 +180,7 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.secondary)
+        .tint(clr1)
     }
     
     private func btnZero_Click() {
@@ -201,7 +205,7 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.orange)
+        .tint(clr2)
     }
     
     private func btnD_Click() {
@@ -220,7 +224,7 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.orange)
+        .tint(clr2)
     }
     
     private func btnRoll_Click() {
