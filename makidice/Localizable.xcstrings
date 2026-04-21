@@ -32,6 +32,12 @@
             "state" : "translated",
             "value" : "Cancellare"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apagar"
+          }
         }
       }
     },
@@ -70,6 +76,12 @@
             "state" : "translated",
             "value" : "Dadi"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados"
+          }
         }
       }
     },
@@ -99,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Difficoltà"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dificuldade"
           }
         }
       }
@@ -130,6 +148,12 @@
             "state" : "translated",
             "value" : "Lanciare"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lançar"
+          }
         }
       }
     },
@@ -159,6 +183,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Successi"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sucessos"
           }
         }
       }

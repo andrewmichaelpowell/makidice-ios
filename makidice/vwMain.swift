@@ -29,8 +29,8 @@ struct vwMain: View {
                 VStack {
                     HStack {
                         btnQuick(4)
-                        btnQuick(8)
                         btnQuick(6)
+                        btnQuick(8)
                     }
                     HStack {
                         btnQuick(10)
