@@ -38,8 +38,8 @@ struct vwMain: View {
                         btnQuick(20)
                     }
                     HStack {
-                        btnQuick(100)
                         btnClear
+                        btnQuick(100)
                         NavigationLink(destination: vwD10()) {
                             Text("D10")
                                 .font(.title)
@@ -69,8 +69,8 @@ struct vwMain: View {
                         btnNumber(9)
                     }
                     HStack {
-                        btnZero
                         btnD
+                        btnZero
                         btnRoll
                     }
                 }

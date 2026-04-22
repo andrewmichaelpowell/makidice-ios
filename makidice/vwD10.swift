@@ -80,9 +80,9 @@ struct vwD10: View {
                         btnNumber(9)
                     }
                     .padding(.horizontal)
-                HStack {
-                        btnNumber(10)
+                    HStack {
                         btnClear
+                        btnNumber(10)
                         btnRoll
                     }
                     .padding(.horizontal)
