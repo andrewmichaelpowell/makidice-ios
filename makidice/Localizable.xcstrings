@@ -33,6 +33,12 @@
             "value" : "Cancellare"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wissen"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +83,12 @@
             "value" : "Dadi"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dobbelstenen"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +123,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Difficoltà"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moeilijkheid"
           }
         },
         "pt" : {
@@ -149,6 +167,12 @@
             "value" : "Lanciare"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gooi"
+          }
+        },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
@@ -183,6 +207,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Successi"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successen"
           }
         },
         "pt" : {
