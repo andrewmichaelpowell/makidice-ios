@@ -1,16 +1,17 @@
 //  Maki Dice
 //  github.com/andrewmichaelpowell
+//
 
 import SwiftUI
 
 struct vwMain: View {
     
     @State private var valResult:String = "0"
-    @State private var Side:Int = 1;
-    @State private var Reset:Int = 1;
-    @State private var LeftValue:String = "";
-    @State private var RightValue:String = "";
-    @State private var RollResult:Int = 0;
+    @State private var Side:Int = 1
+    @State private var Reset:Int = 1
+    @State private var LeftValue:String = ""
+    @State private var RightValue:String = ""
+    @State private var RollResult:Int = 0
     
     let clr1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
     let clr2 = Color(red: 255/255.0, green: 146/255.0, blue: 48/255.0, opacity: 1.0)
@@ -94,10 +95,10 @@ struct vwMain: View {
     }
     
     private func QuickRoll(DieType: Int) {
-        RollResult = Int.random(in: 1...DieType);
-        valResult = "";
+        RollResult = Int.random(in: 1...DieType)
+        valResult = ""
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-            valResult = String(RollResult);
+            valResult = String(RollResult)
         }
     }
     
@@ -114,48 +115,48 @@ struct vwMain: View {
     }
 
     private func btnClear_Click() {
-        Side = 1;
-        LeftValue = "";
-        RightValue = "";
-        valResult = "";
+        Side = 1
+        LeftValue = ""
+        RightValue = ""
+        valResult = ""
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-            valResult = "0";
+            valResult = "0"
         }
     }
     
     private func SetRight(ButtonValue: Int) {
         if (RightValue == "") {
-            RightValue = RightValue + String(ButtonValue);
-            valResult = LeftValue + "d" + RightValue;
+            RightValue = RightValue + String(ButtonValue)
+            valResult = LeftValue + "d" + RightValue
         }
         else if (RightValue.count < 3) {
-            RightValue = RightValue + String(ButtonValue);
-            valResult = LeftValue + "d" + RightValue;
+            RightValue = RightValue + String(ButtonValue)
+            valResult = LeftValue + "d" + RightValue
         }
     }
 
     private func SetLeft(ButtonValue: Int) {
         if (Reset == 1) {
-            LeftValue = "";
-            RightValue = "";
-            Reset = 0;
+            LeftValue = ""
+            RightValue = ""
+            Reset = 0
         }
         if (LeftValue == "") {
-            LeftValue = LeftValue + String(ButtonValue);
-            valResult = LeftValue;
+            LeftValue = LeftValue + String(ButtonValue)
+            valResult = LeftValue
         }
         else if (LeftValue.count < 3) {
-            LeftValue = LeftValue + String(ButtonValue);
-            valResult = LeftValue;
+            LeftValue = LeftValue + String(ButtonValue)
+            valResult = LeftValue
         }
     }
     
     private func AddValueToSide (ButtonValue: Int) {
         if (Side == 1) {
-            SetLeft(ButtonValue: ButtonValue);
+            SetLeft(ButtonValue: ButtonValue)
         }
         if (Side == 2) {
-            SetRight(ButtonValue: ButtonValue);
+            SetRight(ButtonValue: ButtonValue)
         }
     }
     
@@ -186,12 +187,12 @@ struct vwMain: View {
     private func btnZero_Click() {
         if (Side == 1) {
             if ((LeftValue != "") && (Reset == 0)) {
-                AddValueToSide(ButtonValue: 0);
+                AddValueToSide(ButtonValue: 0)
             }
         }
         if (Side == 2) {
             if ((RightValue != "") && (Reset == 0)) {
-                AddValueToSide(ButtonValue: 0);
+                AddValueToSide(ButtonValue: 0)
             }
         }
     }
@@ -210,8 +211,8 @@ struct vwMain: View {
     
     private func btnD_Click() {
         if ((Side == 1) && (Reset == 0)) {
-            Side = 2;
-            valResult = LeftValue + "d";
+            Side = 2
+            valResult = LeftValue + "d"
         }
     }
     
@@ -229,16 +230,16 @@ struct vwMain: View {
     
     private func btnRoll_Click() {
         if ((LeftValue != "") && (RightValue != "")) {
-            RollResult = 0;
+            RollResult = 0
             for _ in 1...Int(LeftValue)! {
-                RollResult = RollResult + Int.random(in: 1...Int(RightValue)!);
+                RollResult = RollResult + Int.random(in: 1...Int(RightValue)!)
             }
-            valResult = "";
+            valResult = ""
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-                valResult = String(RollResult);
+                valResult = String(RollResult)
             }
-            Side = 1;
-            Reset = 1;
+            Side = 1
+            Reset = 1
         }
     }
 }
