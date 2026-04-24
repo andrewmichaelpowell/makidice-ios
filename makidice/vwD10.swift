@@ -19,7 +19,7 @@ struct vwD10: View {
     let clr3 = Color(red: 2/255.0, green: 211/255.0, blue: 223/255.0, opacity: 1.0)
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Spacer()
                 HStack {
