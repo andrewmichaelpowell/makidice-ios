@@ -12,9 +12,9 @@ struct vwMain: View {
     @State private var RightValue:String = "";
     @State private var RollResult:Int = 0;
     
-    let clr1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
-    let clr2 = Color(red: 255/255.0, green: 146/255.0, blue: 48/255.0, opacity: 1.0)
-    let clr3 = Color(red: 2/255.0, green: 211/255.0, blue: 223/255.0, opacity: 1.0)
+    let clr1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0);
+    let clr2 = Color(red: 255/255.0, green: 146/255.0, blue: 48/255.0, opacity: 1.0);
+    let clr3 = Color(red: 2/255.0, green: 211/255.0, blue: 223/255.0, opacity: 1.0);
     
     var body: some View {
         NavigationStack {
