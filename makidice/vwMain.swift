@@ -5,7 +5,7 @@ import SwiftUI
 
 struct vwMain: View {
     
-    @State private var valResult:String = "0"
+    @State private var valResult:String = "0";
     @State private var Side:Int = 1;
     @State private var Reset:Int = 1;
     @State private var LeftValue:String = "";
