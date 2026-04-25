@@ -5,14 +5,14 @@ import SwiftUI
 
 struct vwD10: View {
     
-    @State private var valDice:String = "0";
-    @State private var valDifficulty:String = "0";
-    @State private var valSuccesses:String = "0";
-    @State private var Dice:Int = 0;
-    @State private var Difficulty:Int = 0;
-    @State private var Successes:Int = 0;
-    @State private var Side:Int = 1;
-    @State private var RollResult:Int = 0;
+    @State private var valDice:String = "0"
+    @State private var valDifficulty:String = "0"
+    @State private var valSuccesses:String = "0"
+    @State private var Dice:Int = 0
+    @State private var Difficulty:Int = 0
+    @State private var Successes:Int = 0
+    @State private var Side:Int = 1
+    @State private var RollResult:Int = 0
     
     let clr1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
     let clr2 = Color(red: 255/255.0, green: 146/255.0, blue: 48/255.0, opacity: 1.0)
@@ -147,27 +147,27 @@ struct vwD10: View {
     }
 
     private func btnClear_Click() {
-        Dice = 0;
-        Difficulty = 0;
-        Successes = 0;
-        valDice = "";
-        valDifficulty = "";
-        valSuccesses = "";
+        Dice = 0
+        Difficulty = 0
+        Successes = 0
+        valDice = ""
+        valDifficulty = ""
+        valSuccesses = ""
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-            valDice = "0";
-            valDifficulty = "0";
-            valSuccesses = "0";
+            valDice = "0"
+            valDifficulty = "0"
+            valSuccesses = "0"
         }
     }
         
     private func AddValueToSide (ButtonValue: Int) {
         if (Side == 1) {
-            Dice = ButtonValue;
-            valDice = (String(Dice));
+            Dice = ButtonValue
+            valDice = (String(Dice))
         }
         if (Side == 2) {
-            Difficulty = ButtonValue;
-            valDifficulty = (String(Difficulty));
+            Difficulty = ButtonValue
+            valDifficulty = (String(Difficulty))
         }
     }
     
@@ -209,7 +209,7 @@ struct vwD10: View {
     }
 
     private func btnDice_Click() {
-        Side = 1;
+        Side = 1
     }
 
     private var btnDifficulty: some View {
@@ -238,7 +238,7 @@ struct vwD10: View {
     }
 
     private func btnDifficulty_Click() {
-        Side = 2;
+        Side = 2
     }
         
     private var btnRoll: some View {
@@ -255,22 +255,22 @@ struct vwD10: View {
     
     private func btnRoll_Click() {
         if ((Dice != 0) && (Difficulty != 0)) {
-            Successes = 0;
+            Successes = 0
             for _ in 1...Dice {
-                RollResult = Int.random(in: 1...10);
+                RollResult = Int.random(in: 1...10)
                 if (RollResult == 1) {
-                    Successes = Successes - 1;
+                    Successes = Successes - 1
                 }
                 else if (RollResult == 10) {
-                    Successes = Successes + 2;
+                    Successes = Successes + 2
                 }
                 else if (RollResult >= Difficulty) {
-                    Successes = Successes + 1;
+                    Successes = Successes + 1
                 }
             }
-            valSuccesses = "";
+            valSuccesses = ""
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-                valSuccesses = String(Successes);
+                valSuccesses = String(Successes)
             }
         }
     }
