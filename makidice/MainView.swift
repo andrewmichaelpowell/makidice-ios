@@ -5,12 +5,12 @@ import SwiftUI
 
 struct MainView: View {
     
+    @State private var DiceNumber:String = ""
+    @State private var DiceType:String = ""
+    @State private var Reset:Int = 1
     @State private var ResultString:String = "0"
     @State private var ResultValue:Int = 0
     @State private var Side:Int = 1
-    @State private var Reset:Int = 1
-    @State private var LeftValue:String = ""
-    @State private var RightValue:String = ""
     
     let Color1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
     let Color2 = Color(red: 255/255.0, green: 146/255.0, blue: 48/255.0, opacity: 1.0)
@@ -115,8 +115,8 @@ struct MainView: View {
 
     private func ClearButton_Click() {
         Side = 1
-        LeftValue = ""
-        RightValue = ""
+        DiceNumber = ""
+        DiceType = ""
         ResultString = ""
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             ResultString = "0"
@@ -124,29 +124,29 @@ struct MainView: View {
     }
     
     private func SetRight(ButtonValue: Int) {
-        if (RightValue == "") {
-            RightValue = RightValue + String(ButtonValue)
-            ResultString = LeftValue + "d" + RightValue
+        if (DiceType == "") {
+            DiceType = DiceType + String(ButtonValue)
+            ResultString = DiceNumber + "d" + DiceType
         }
-        else if (RightValue.count < 3) {
-            RightValue = RightValue + String(ButtonValue)
-            ResultString = LeftValue + "d" + RightValue
+        else if (DiceType.count < 3) {
+            DiceType = DiceType + String(ButtonValue)
+            ResultString = DiceNumber + "d" + DiceType
         }
     }
 
     private func SetLeft(ButtonValue: Int) {
         if (Reset == 1) {
-            LeftValue = ""
-            RightValue = ""
+            DiceNumber = ""
+            DiceType = ""
             Reset = 0
         }
-        if (LeftValue == "") {
-            LeftValue = LeftValue + String(ButtonValue)
-            ResultString = LeftValue
+        if (DiceNumber == "") {
+            DiceNumber = DiceNumber + String(ButtonValue)
+            ResultString = DiceNumber
         }
-        else if (LeftValue.count < 3) {
-            LeftValue = LeftValue + String(ButtonValue)
-            ResultString = LeftValue
+        else if (DiceNumber.count < 3) {
+            DiceNumber = DiceNumber + String(ButtonValue)
+            ResultString = DiceNumber
         }
     }
     
@@ -185,12 +185,12 @@ struct MainView: View {
     
     private func ZeroButton_Click() {
         if (Side == 1) {
-            if ((LeftValue != "") && (Reset == 0)) {
+            if ((DiceNumber != "") && (Reset == 0)) {
                 AddValueToSide(ButtonValue: 0)
             }
         }
         if (Side == 2) {
-            if ((RightValue != "") && (Reset == 0)) {
+            if ((DiceType != "") && (Reset == 0)) {
                 AddValueToSide(ButtonValue: 0)
             }
         }
@@ -211,7 +211,7 @@ struct MainView: View {
     private func DButton_Click() {
         if ((Side == 1) && (Reset == 0)) {
             Side = 2
-            ResultString = LeftValue + "d"
+            ResultString = DiceNumber + "d"
         }
     }
     
@@ -228,10 +228,10 @@ struct MainView: View {
     }
     
     private func RollButton_Click() {
-        if ((LeftValue != "") && (RightValue != "")) {
+        if ((DiceNumber != "") && (DiceType != "")) {
             ResultValue = 0
-            for _ in 1...Int(LeftValue)! {
-                ResultValue = ResultValue + Int.random(in: 1...Int(RightValue)!)
+            for _ in 1...Int(DiceNumber)! {
+                ResultValue = ResultValue + Int.random(in: 1...Int(DiceType)!)
             }
             ResultString = ""
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {

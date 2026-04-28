@@ -6,13 +6,13 @@ import SwiftUI
 struct D10View: View {
     
     @State private var DiceString:String = "0"
-    @State private var DifficultyString:String = "0"
-    @State private var SuccessesString:String = "0"
     @State private var DiceValue:Int = 0
+    @State private var DifficultyString:String = "0"
     @State private var DifficultyValue:Int = 0
-    @State private var SuccessesValue:Int = 0
-    @State private var Side:Int = 1
     @State private var Result:Int = 0
+    @State private var Selected:Int = 1
+    @State private var SuccessesString:String = "0"
+    @State private var SuccessesValue:Int = 0
     
     let Color1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
     let Color2 = Color(red: 255/255.0, green: 146/255.0, blue: 48/255.0, opacity: 1.0)
@@ -93,7 +93,7 @@ struct D10View: View {
     }
     
     private var DiceLabel: some View {
-        if (Side == 1) {
+        if (Selected == 1) {
             Text("Dice")
                 .font(.largeTitle)
                 .foregroundColor(Color3)
@@ -114,7 +114,7 @@ struct D10View: View {
     }
 
     private var DifficultyLabel: some View {
-        if (Side == 2) {
+        if (Selected == 2) {
             Text("Difficulty")
                 .font(.largeTitle)
                 .foregroundColor(Color3)
@@ -161,11 +161,11 @@ struct D10View: View {
     }
         
     private func AddValueToSide (ButtonValue: Int) {
-        if (Side == 1) {
+        if (Selected == 1) {
             DiceValue = ButtonValue
             DiceString = (String(DiceValue))
         }
-        if (Side == 2) {
+        if (Selected == 2) {
             DifficultyValue = ButtonValue
             DifficultyString = (String(DifficultyValue))
         }
@@ -184,7 +184,7 @@ struct D10View: View {
     }
     
     private var DiceButton: some View {
-        if (Side == 1) {
+        if (Selected == 1) {
             Button(action: DiceButton_Click) {
                 Text("Dice")
                     .font(.title)
@@ -209,11 +209,11 @@ struct D10View: View {
     }
 
     private func DiceButton_Click() {
-        Side = 1
+        Selected = 1
     }
 
     private var DifficultyButton: some View {
-        if (Side == 2) {
+        if (Selected == 2) {
             Button(action: DifficultyButton_Click) {
                 Text("Difficulty")
                     .font(.title)
@@ -238,7 +238,7 @@ struct D10View: View {
     }
 
     private func DifficultyButton_Click() {
-        Side = 2
+        Selected = 2
     }
         
     private var RollButton: some View {
