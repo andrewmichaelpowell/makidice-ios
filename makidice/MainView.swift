@@ -40,7 +40,7 @@ struct MainView: View {
                     HStack {
                         ClearButton
                         QuickButton(100)
-                        NavigationLink(destination: vwD10()) {
+                        NavigationLink(destination: D10View()) {
                             Text("D10")
                                 .font(.title)
                                 .frame(maxWidth: .infinity, maxHeight: 50)
