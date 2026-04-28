@@ -4,10 +4,10 @@
 import SwiftUI
 
 @main
-struct makidiceApp: App {
+struct MakiDice: App {
     var body: some Scene {
         WindowGroup {
-            vwMain()
+            MainView()
         }
     }
 }

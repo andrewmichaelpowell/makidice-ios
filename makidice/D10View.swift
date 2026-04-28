@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-struct vwD10: View {
+struct D10View: View {
     
     @State private var valDice:String = "0"
     @State private var valDifficulty:String = "0"

@@ -3,24 +3,24 @@
 
 import SwiftUI
 
-struct vwMain: View {
+struct MainView: View {
     
-    @State private var valResult:String = "0"
+    @State private var ResultString:String = "0"
+    @State private var ResultValue:Int = 0
     @State private var Side:Int = 1
     @State private var Reset:Int = 1
     @State private var LeftValue:String = ""
     @State private var RightValue:String = ""
-    @State private var RollResult:Int = 0
     
-    let clr1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
-    let clr2 = Color(red: 255/255.0, green: 146/255.0, blue: 48/255.0, opacity: 1.0)
-    let clr3 = Color(red: 2/255.0, green: 211/255.0, blue: 223/255.0, opacity: 1.0)
+    let Color1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
+    let Color2 = Color(red: 255/255.0, green: 146/255.0, blue: 48/255.0, opacity: 1.0)
+    let Color3 = Color(red: 2/255.0, green: 211/255.0, blue: 223/255.0, opacity: 1.0)
     
     var body: some View {
         NavigationStack {
             VStack {
                 Spacer()
-                   Text(valResult)
+                   Text(ResultString)
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .trailing)
@@ -28,18 +28,18 @@ struct vwMain: View {
                     .minimumScaleFactor(0.2)
                 VStack {
                     HStack {
-                        btnQuick(4)
-                        btnQuick(6)
-                        btnQuick(8)
+                        QuickButton(4)
+                        QuickButton(6)
+                        QuickButton(8)
                     }
                     HStack {
-                        btnQuick(10)
-                        btnQuick(12)
-                        btnQuick(20)
+                        QuickButton(10)
+                        QuickButton(12)
+                        QuickButton(20)
                     }
                     HStack {
-                        btnClear
-                        btnQuick(100)
+                        ClearButton
+                        QuickButton(100)
                         NavigationLink(destination: vwD10()) {
                             Text("D10")
                                 .font(.title)
@@ -48,30 +48,30 @@ struct vwMain: View {
                                 .minimumScaleFactor(0.2)
                         }
                         .buttonStyle(.borderedProminent)
-                        .tint(clr3)
+                        .tint(Color3)
                     }
                 }
                 .padding(.vertical)
                 VStack {
                     HStack {
-                        btnNumber(1)
-                        btnNumber(2)
-                        btnNumber(3)
+                        NumberButton(1)
+                        NumberButton(2)
+                        NumberButton(3)
                     }
                     HStack {
-                        btnNumber(4)
-                        btnNumber(5)
-                        btnNumber(6)
+                        NumberButton(4)
+                        NumberButton(5)
+                        NumberButton(6)
                     }
                     HStack {
-                        btnNumber(7)
-                        btnNumber(8)
-                        btnNumber(9)
+                        NumberButton(7)
+                        NumberButton(8)
+                        NumberButton(9)
                     }
                     HStack {
-                        btnD
-                        btnZero
-                        btnRoll
+                        DButton
+                        ZeroButton
+                        RollButton
                     }
                 }
             }
@@ -81,7 +81,7 @@ struct vwMain: View {
         }
     }
     
-    private func btnQuick(_ digit: Int) -> some View {
+    private func QuickButton(_ digit: Int) -> some View {
         Button(action: {QuickRoll(DieType: digit)}) {
             Text("1d" + String(digit))
                 .font(.title)
@@ -90,19 +90,19 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(clr1)
+        .tint(Color1)
     }
     
     private func QuickRoll(DieType: Int) {
-        RollResult = Int.random(in: 1...DieType)
-        valResult = ""
+        ResultValue = Int.random(in: 1...DieType)
+        ResultString = ""
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-            valResult = String(RollResult)
+            ResultString = String(ResultValue)
         }
     }
     
-    private var btnClear: some View {
-        Button(action: btnClear_Click) {
+    private var ClearButton: some View {
+        Button(action: ClearButton_Click) {
             Text("Clear")
                 .font(.title)
                 .frame(maxWidth: .infinity, maxHeight: 50)
@@ -110,27 +110,27 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(clr2)
+        .tint(Color2)
     }
 
-    private func btnClear_Click() {
+    private func ClearButton_Click() {
         Side = 1
         LeftValue = ""
         RightValue = ""
-        valResult = ""
+        ResultString = ""
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-            valResult = "0"
+            ResultString = "0"
         }
     }
     
     private func SetRight(ButtonValue: Int) {
         if (RightValue == "") {
             RightValue = RightValue + String(ButtonValue)
-            valResult = LeftValue + "d" + RightValue
+            ResultString = LeftValue + "d" + RightValue
         }
         else if (RightValue.count < 3) {
             RightValue = RightValue + String(ButtonValue)
-            valResult = LeftValue + "d" + RightValue
+            ResultString = LeftValue + "d" + RightValue
         }
     }
 
@@ -142,11 +142,11 @@ struct vwMain: View {
         }
         if (LeftValue == "") {
             LeftValue = LeftValue + String(ButtonValue)
-            valResult = LeftValue
+            ResultString = LeftValue
         }
         else if (LeftValue.count < 3) {
             LeftValue = LeftValue + String(ButtonValue)
-            valResult = LeftValue
+            ResultString = LeftValue
         }
     }
     
@@ -159,7 +159,7 @@ struct vwMain: View {
         }
     }
     
-    private func btnNumber(_ digit: Int) -> some View {
+    private func NumberButton(_ digit: Int) -> some View {
         Button(action: {AddValueToSide(ButtonValue: digit)}) {
             Text(String(digit))
                 .font(.title)
@@ -168,11 +168,11 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(clr1)
+        .tint(Color1)
     }
     
-    private var btnZero: some View {
-        Button(action: btnZero_Click) {
+    private var ZeroButton: some View {
+        Button(action: ZeroButton_Click) {
             Text("0")
                 .font(.title)
                 .frame(maxWidth: .infinity, maxHeight: 50)
@@ -180,10 +180,10 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(clr1)
+        .tint(Color1)
     }
     
-    private func btnZero_Click() {
+    private func ZeroButton_Click() {
         if (Side == 1) {
             if ((LeftValue != "") && (Reset == 0)) {
                 AddValueToSide(ButtonValue: 0)
@@ -196,8 +196,8 @@ struct vwMain: View {
         }
     }
     
-    private var btnD: some View {
-        Button(action: btnD_Click) {
+    private var DButton: some View {
+        Button(action: DButton_Click) {
             Text("d")
                 .font(.title)
                 .frame(maxWidth: .infinity, maxHeight: 50)
@@ -205,18 +205,18 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(clr2)
+        .tint(Color2)
     }
     
-    private func btnD_Click() {
+    private func DButton_Click() {
         if ((Side == 1) && (Reset == 0)) {
             Side = 2
-            valResult = LeftValue + "d"
+            ResultString = LeftValue + "d"
         }
     }
     
-    private var btnRoll: some View {
-        Button(action: btnRoll_Click) {
+    private var RollButton: some View {
+        Button(action: RollButton_Click) {
             Text("Roll")
                 .font(.title)
                 .frame(maxWidth: .infinity, maxHeight: 50)
@@ -224,18 +224,18 @@ struct vwMain: View {
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(clr2)
+        .tint(Color2)
     }
     
-    private func btnRoll_Click() {
+    private func RollButton_Click() {
         if ((LeftValue != "") && (RightValue != "")) {
-            RollResult = 0
+            ResultValue = 0
             for _ in 1...Int(LeftValue)! {
-                RollResult = RollResult + Int.random(in: 1...Int(RightValue)!)
+                ResultValue = ResultValue + Int.random(in: 1...Int(RightValue)!)
             }
-            valResult = ""
+            ResultString = ""
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-                valResult = String(RollResult)
+                ResultString = String(ResultValue)
             }
             Side = 1
             Reset = 1
