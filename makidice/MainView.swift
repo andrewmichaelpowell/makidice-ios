@@ -20,7 +20,7 @@ struct MainView: View {
         NavigationStack {
             VStack {
                 Spacer()
-                   Text(ResultString)
+                Text(ResultString)
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .trailing)
