@@ -97,7 +97,7 @@ struct MainView: View
     
     private func QuickButton(_ digit: Int) -> some View
     {
-        Button(action: {QuickRoll(DieType: digit)})
+        Button(action: {QuickButton_Click(DieType: digit)})
         {
             Text("1d" + String(digit))
                 .font(.title)
@@ -109,7 +109,7 @@ struct MainView: View
         .tint(Color1)
     }
     
-    private func QuickRoll(DieType: Int)
+    private func QuickButton_Click(DieType: Int)
     {
         ResultValue = Int.random(in: 1...DieType)
         ResultString = ""
