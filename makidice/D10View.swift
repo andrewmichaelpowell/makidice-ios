@@ -102,6 +102,10 @@ struct D10View: View
                     RollButton
                 }
                 .padding(.horizontal)
+                VStack
+                {
+                }
+                .padding(.vertical)
             }
             .background(.black)
             .preferredColorScheme(.dark)

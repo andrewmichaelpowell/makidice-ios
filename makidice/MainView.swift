@@ -92,6 +92,10 @@ struct MainView: View
                         RollButton
                     }
                 }
+                VStack
+                {
+                }
+                .padding(.vertical)
             }
             .padding(.horizontal)
             .background(.black)
