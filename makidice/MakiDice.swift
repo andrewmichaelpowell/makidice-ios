@@ -13,5 +13,6 @@ struct MakiDice: App
         {
             MainView()
         }
+        .defaultSize(width: 500, height: 660)
     }
 }
