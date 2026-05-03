@@ -63,6 +63,10 @@ struct MainView: View
                 .padding(.vertical)
                 VStack
                 {
+                }
+                .padding(.vertical, 4)
+                VStack
+                {
                     HStack
                     {
                         NumberButton(1)

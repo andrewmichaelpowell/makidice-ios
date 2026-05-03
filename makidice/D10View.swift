@@ -70,6 +70,10 @@ struct D10View: View
                     DifficultyButton
                 }
                 .padding()
+                VStack
+                {
+                }
+                .padding(.vertical, 4)
                 HStack
                 {
                     NumberButton(1)
