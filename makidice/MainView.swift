@@ -97,7 +97,7 @@ struct MainView: View
     
     private func QuickButton(_ digit: Int) -> some View
     {
-        Button(action: {QuickButton_Click(DieType: digit)})
+        Button(action: {QuickButton_Click(QuickDiceType: digit)})
         {
             Text("1d" + String(digit))
                 .font(.title)
@@ -109,9 +109,9 @@ struct MainView: View
         .tint(Color1)
     }
     
-    private func QuickButton_Click(DieType: Int)
+    private func QuickButton_Click(QuickDiceType: Int)
     {
-        ResultValue = Int.random(in: 1...DieType)
+        ResultValue = Int.random(in: 1...QuickDiceType)
         ResultString = ""
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1)
         {
