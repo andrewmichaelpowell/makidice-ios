@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "makidicelm.jpg",
+      "filename" : "Any Appearance.jpg",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "makidicedm.jpg",
+      "filename" : "Dark.jpg",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -25,7 +25,7 @@
           "value" : "tinted"
         }
       ],
-      "filename" : "makidicetm.jpg",
+      "filename" : "Tinted.jpg",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
