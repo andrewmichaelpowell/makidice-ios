@@ -229,13 +229,15 @@ struct MainView: View
     
     private func ZeroButton_Click()
     {
-        if (Side == 1) {
+        if (Side == 1)
+        {
             if ((DiceNumber != "") && (Reset == 0))
             {
                 AddValueToSide(ButtonValue: 0)
             }
         }
-        if (Side == 2) {
+        if (Side == 2)
+        {
             if ((DiceType != "") && (Reset == 0))
             {
                 AddValueToSide(ButtonValue: 0)
@@ -299,4 +301,3 @@ struct MainView: View
         }
     }
 }
-
