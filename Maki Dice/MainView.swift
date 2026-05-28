@@ -140,7 +140,7 @@ struct MainView: View
         .buttonStyle(.borderedProminent)
         .tint(Color2)
     }
-
+    
     private func ClearButton_Click()
     {
         Side = 1
@@ -166,7 +166,7 @@ struct MainView: View
             ResultString = DiceNumber + "d" + DiceType
         }
     }
-
+    
     private func SetLeft(ButtonValue: Int)
     {
         if (Reset == 1)
