@@ -6,16 +6,16 @@ import SwiftUI
 struct MainView: View
 {
     
-    @State private var DiceNumber:String = ""
-    @State private var DiceType:String = ""
-    @State private var Reset:Int = 1
-    @State private var ResultString:String = "0"
-    @State private var ResultValue:Int = 0
-    @State private var Side:Int = 1
+    @State private var diceNumber:String = ""
+    @State private var diceType:String = ""
+    @State private var editSide:Int = 1
+    @State private var resetInput:Int = 1
+    @State private var resultString:String = "0"
+    @State private var resultValue:Int = 0
     
-    let Color1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
-    let Color2 = Color(red: 255/255.0, green: 146/255.0, blue: 48/255.0, opacity: 1.0)
-    let Color3 = Color(red: 2/255.0, green: 211/255.0, blue: 223/255.0, opacity: 1.0)
+    let color1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
+    let color2 = Color(red: 255/255.0, green: 146/255.0, blue: 48/255.0, opacity: 1.0)
+    let color3 = Color(red: 2/255.0, green: 211/255.0, blue: 223/255.0, opacity: 1.0)
     
     var body: some View
     {
@@ -24,7 +24,7 @@ struct MainView: View
             VStack
             {
                 Spacer()
-                Text(ResultString)
+                Text(resultString)
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .trailing)
@@ -34,20 +34,20 @@ struct MainView: View
                 {
                     HStack
                     {
-                        QuickButton(4)
-                        QuickButton(6)
-                        QuickButton(8)
+                        quickButton(4)
+                        quickButton(6)
+                        quickButton(8)
                     }
                     HStack
                     {
-                        QuickButton(10)
-                        QuickButton(12)
-                        QuickButton(20)
+                        quickButton(10)
+                        quickButton(12)
+                        quickButton(20)
                     }
                     HStack
                     {
-                        ClearButton
-                        QuickButton(100)
+                        clearButton
+                        quickButton(100)
                         NavigationLink(destination: D10View())
                         {
                             Text("D10")
@@ -57,7 +57,7 @@ struct MainView: View
                                 .minimumScaleFactor(0.2)
                         }
                         .buttonStyle(.borderedProminent)
-                        .tint(Color3)
+                        .tint(color3)
                     }
                 }
                 .padding(.vertical)
@@ -69,27 +69,27 @@ struct MainView: View
                 {
                     HStack
                     {
-                        NumberButton(1)
-                        NumberButton(2)
-                        NumberButton(3)
+                        numberButton(1)
+                        numberButton(2)
+                        numberButton(3)
                     }
                     HStack
                     {
-                        NumberButton(4)
-                        NumberButton(5)
-                        NumberButton(6)
+                        numberButton(4)
+                        numberButton(5)
+                        numberButton(6)
                     }
                     HStack
                     {
-                        NumberButton(7)
-                        NumberButton(8)
-                        NumberButton(9)
+                        numberButton(7)
+                        numberButton(8)
+                        numberButton(9)
                     }
                     HStack
                     {
-                        DButton
-                        ZeroButton
-                        RollButton
+                        dButton
+                        zeroButton
+                        rollButton
                     }
                 }
                 VStack
@@ -103,9 +103,9 @@ struct MainView: View
         }
     }
     
-    private func QuickButton(_ digit: Int) -> some View
+    private func quickButton(_ digit: Int) -> some View
     {
-        Button(action: {QuickButton_Click(QuickDiceType: digit)})
+        Button(action: {quickRoll(quickDiceType: digit)})
         {
             Text("1d" + String(digit))
                 .font(.title)
@@ -114,22 +114,22 @@ struct MainView: View
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(Color1)
+        .tint(color1)
     }
     
-    private func QuickButton_Click(QuickDiceType: Int)
+    private func quickRoll(quickDiceType: Int)
     {
-        ResultValue = Int.random(in: 1...QuickDiceType)
-        ResultString = ""
+        resultValue = Int.random(in: 1...quickDiceType)
+        resultString = ""
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1)
         {
-            ResultString = String(ResultValue)
+            resultString = String(resultValue)
         }
     }
     
-    private var ClearButton: some View
+    private var clearButton: some View
     {
-        Button(action: ClearButton_Click)
+        Button(action: clear)
         {
             Text("Clear")
                 .font(.title)
@@ -138,70 +138,70 @@ struct MainView: View
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(Color2)
+        .tint(color2)
     }
     
-    private func ClearButton_Click()
+    private func clear()
     {
-        Side = 1
-        DiceNumber = ""
-        DiceType = ""
-        ResultString = ""
+        editSide = 1
+        diceNumber = ""
+        diceType = ""
+        resultString = ""
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1)
         {
-            ResultString = "0"
+            resultString = "0"
         }
     }
     
-    private func SetRight(ButtonValue: Int)
+    private func setRight(buttonValue: Int)
     {
-        if (DiceType == "")
+        if (diceType == "")
         {
-            DiceType = DiceType + String(ButtonValue)
-            ResultString = DiceNumber + "d" + DiceType
+            diceType = diceType + String(buttonValue)
+            resultString = diceNumber + "d" + diceType
         }
-        else if (DiceType.count < 3)
+        else if (diceType.count < 3)
         {
-            DiceType = DiceType + String(ButtonValue)
-            ResultString = DiceNumber + "d" + DiceType
+            diceType = diceType + String(buttonValue)
+            resultString = diceNumber + "d" + diceType
         }
     }
     
-    private func SetLeft(ButtonValue: Int)
+    private func setLeft(buttonValue: Int)
     {
-        if (Reset == 1)
+        if (resetInput == 1)
         {
-            DiceNumber = ""
-            DiceType = ""
-            Reset = 0
+            diceNumber = ""
+            diceType = ""
+            resetInput = 0
         }
-        if (DiceNumber == "")
+        if (diceNumber == "")
         {
-            DiceNumber = DiceNumber + String(ButtonValue)
-            ResultString = DiceNumber
+            diceNumber = diceNumber + String(buttonValue)
+            resultString = diceNumber
         }
-        else if (DiceNumber.count < 3)
+        else if (diceNumber.count < 3)
         {
-            DiceNumber = DiceNumber + String(ButtonValue)
-            ResultString = DiceNumber
+            diceNumber = diceNumber + String(buttonValue)
+            resultString = diceNumber
         }
     }
     
-    private func AddValueToSide (ButtonValue: Int)
+    private func appendDigit (buttonValue: Int)
     {
-        if (Side == 1)
+        if (editSide == 1)
         {
-            SetLeft(ButtonValue: ButtonValue)
+            setLeft(buttonValue: buttonValue)
         }
-        if (Side == 2)
+        if (editSide == 2)
         {
-            SetRight(ButtonValue: ButtonValue)
+            setRight(buttonValue: buttonValue)
         }
     }
     
-    private func NumberButton(_ digit: Int) -> some View
+    private func numberButton(_ digit: Int) -> some View
     {
-        Button(action: {AddValueToSide(ButtonValue: digit)})
+        Button(action: {appendDigit(buttonValue: digit)})
         {
             Text(String(digit))
                 .font(.title)
@@ -210,12 +210,12 @@ struct MainView: View
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(Color1)
+        .tint(color1)
     }
     
-    private var ZeroButton: some View
+    private var zeroButton: some View
     {
-        Button(action: ZeroButton_Click)
+        Button(action: zero)
         {
             Text("0")
                 .font(.title)
@@ -224,30 +224,30 @@ struct MainView: View
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(Color1)
+        .tint(color1)
     }
     
-    private func ZeroButton_Click()
+    private func zero()
     {
-        if (Side == 1)
+        if (editSide == 1)
         {
-            if ((DiceNumber != "") && (Reset == 0))
+            if ((diceNumber != "") && (resetInput == 0))
             {
-                AddValueToSide(ButtonValue: 0)
+                appendDigit(buttonValue: 0)
             }
         }
-        if (Side == 2)
+        if (editSide == 2)
         {
-            if ((DiceType != "") && (Reset == 0))
+            if ((diceType != "") && (resetInput == 0))
             {
-                AddValueToSide(ButtonValue: 0)
+                appendDigit(buttonValue: 0)
             }
         }
     }
     
-    private var DButton: some View
+    private var dButton: some View
     {
-        Button(action: DButton_Click)
+        Button(action: d)
         {
             Text("d")
                 .font(.title)
@@ -256,21 +256,21 @@ struct MainView: View
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(Color2)
+        .tint(color2)
     }
     
-    private func DButton_Click()
+    private func d()
     {
-        if ((Side == 1) && (Reset == 0))
+        if ((editSide == 1) && (resetInput == 0))
         {
-            Side = 2
-            ResultString = DiceNumber + "d"
+            editSide = 2
+            resultString = diceNumber + "d"
         }
     }
     
-    private var RollButton: some View
+    private var rollButton: some View
     {
-        Button(action: RollButton_Click)
+        Button(action: roll)
         {
             Text("Roll")
                 .font(.title)
@@ -279,25 +279,25 @@ struct MainView: View
                 .minimumScaleFactor(0.2)
         }
         .buttonStyle(.borderedProminent)
-        .tint(Color2)
+        .tint(color2)
     }
     
-    private func RollButton_Click()
+    private func roll()
     {
-        if ((DiceNumber != "") && (DiceType != ""))
+        if ((diceNumber != "") && (diceType != ""))
         {
-            ResultValue = 0
-            for _ in 1...Int(DiceNumber)!
+            resultValue = 0
+            for _ in 1...Int(diceNumber)!
             {
-                ResultValue = ResultValue + Int.random(in: 1...Int(DiceType)!)
+                resultValue = resultValue + Int.random(in: 1...Int(diceType)!)
             }
-            ResultString = ""
+            resultString = ""
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1)
             {
-                ResultString = String(ResultValue)
+                resultString = String(resultValue)
             }
-            Side = 1
-            Reset = 1
+            editSide = 1
+            resetInput = 1
         }
     }
 }
