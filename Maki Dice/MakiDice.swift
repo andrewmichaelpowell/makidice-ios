@@ -7,12 +7,12 @@ import SwiftUI
 
 struct MakiDice: App
 {
-    var body: some Scene
-    {
-        WindowGroup
-        {
-            MainView()
-        }
-        .defaultSize(width: 500, height: 680)
-    }
+	var body: some Scene
+	{
+		WindowGroup
+		{
+			MainView()
+		}
+		.defaultSize(width: 500, height: 680)
+	}
 }
