@@ -214,7 +214,8 @@ struct D10View: View
 	
 	private var diceButton: some View
 	{
-		if (selected == 1) {
+		if (selected == 1)
+		{
 			Button(action: setDice)
 			{
 				Text("Dice")
