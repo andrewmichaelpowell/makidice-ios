@@ -5,12 +5,9 @@ import SwiftUI
 
 @main
 
-struct MakiDice: App
-{
-	var body: some Scene
-	{
-		WindowGroup
-		{
+struct MakiDice: App {
+	var body: some Scene {
+		WindowGroup {
 			MainView()
 		}
 		.defaultSize(width: 500, height: 680)

@@ -3,30 +3,40 @@
 
 import SwiftUI
 
-struct D10View: View
-{
-	
-	@State private var diceString:String = "0"
-	@State private var diceValue:Int = 0
-	@State private var difficultyString:String = "0"
-	@State private var difficultyValue:Int = 0
-	@State private var selected:Int = 1
-	@State private var successesString:String = "0"
-	@State private var successesValue:Int = 0
-	
-	let color1 = Color(red: 36/255.0, green: 36/255.0, blue: 40/255.0, opacity: 1.0)
-	let color2 = Color(red: 255/255.0, green: 146/255.0, blue: 48/255.0, opacity: 1.0)
-	let color3 = Color(red: 2/255.0, green: 211/255.0, blue: 223/255.0, opacity: 1.0)
-	
-	var body: some View
-	{
-		NavigationStack
-		{
-			VStack
-			{
+struct D10View: View {
+
+	@State private var diceString: String = "0"
+	@State private var diceValue: Int = 0
+	@State private var difficultyString: String = "0"
+	@State private var difficultyValue: Int = 0
+	@State private var selected: Int = 1
+	@State private var successesString: String = "0"
+	@State private var successesValue: Int = 0
+
+	let color1 = Color(
+		red: 36 / 255.0,
+		green: 36 / 255.0,
+		blue: 40 / 255.0,
+		opacity: 1.0
+	)
+	let color2 = Color(
+		red: 255 / 255.0,
+		green: 146 / 255.0,
+		blue: 48 / 255.0,
+		opacity: 1.0
+	)
+	let color3 = Color(
+		red: 2 / 255.0,
+		green: 211 / 255.0,
+		blue: 223 / 255.0,
+		opacity: 1.0
+	)
+
+	var body: some View {
+		NavigationStack {
+			VStack {
 				Spacer()
-				HStack
-				{
+				HStack {
 					diceLabel
 					Text(diceString)
 						.font(.largeTitle)
@@ -36,8 +46,7 @@ struct D10View: View
 						.minimumScaleFactor(0.2)
 				}
 				.padding(.horizontal)
-				HStack
-				{
+				HStack {
 					difficultyLabel
 					Text(difficultyString)
 						.font(.largeTitle)
@@ -47,8 +56,7 @@ struct D10View: View
 						.minimumScaleFactor(0.2)
 				}
 				.padding(.horizontal)
-				HStack
-				{
+				HStack {
 					Text("Successes")
 						.font(.largeTitle)
 						.foregroundColor(.white)
@@ -63,46 +71,39 @@ struct D10View: View
 						.minimumScaleFactor(0.2)
 				}
 				.padding(.horizontal)
-				HStack
-				{
+				HStack {
 					diceButton
 					difficultyButton
 				}
 				.padding()
-				VStack
-				{
+				VStack {
 				}
 				.padding(.vertical, 4)
-				HStack
-				{
+				HStack {
 					numberButton(1)
 					numberButton(2)
 					numberButton(3)
 				}
 				.padding(.horizontal)
-				HStack
-				{
+				HStack {
 					numberButton(4)
 					numberButton(5)
 					numberButton(6)
 				}
 				.padding(.horizontal)
-				HStack
-				{
+				HStack {
 					numberButton(7)
 					numberButton(8)
 					numberButton(9)
 				}
 				.padding(.horizontal)
-				HStack
-				{
+				HStack {
 					clearButton
 					numberButton(10)
 					rollButton
 				}
 				.padding(.horizontal)
-				VStack
-				{
+				VStack {
 				}
 				.padding(.vertical)
 			}
@@ -110,20 +111,16 @@ struct D10View: View
 			.preferredColorScheme(.dark)
 		}
 	}
-	
-	private var diceLabel: some View
-	{
-		if (selected == 1)
-		{
+
+	private var diceLabel: some View {
+		if selected == 1 {
 			Text("Dice")
 				.font(.largeTitle)
 				.foregroundColor(color3)
 				.frame(maxWidth: .infinity, alignment: .leading)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
-		}
-		else
-		{
+		} else {
 			Text("Dice")
 				.font(.largeTitle)
 				.foregroundColor(.white)
@@ -132,19 +129,16 @@ struct D10View: View
 				.minimumScaleFactor(0.2)
 		}
 	}
-	
-	private var difficultyLabel: some View
-	{
-		if (selected == 2) {
+
+	private var difficultyLabel: some View {
+		if selected == 2 {
 			Text("Difficulty")
 				.font(.largeTitle)
 				.foregroundColor(color3)
 				.frame(maxWidth: .infinity, alignment: .leading)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
-		}
-		else
-		{
+		} else {
 			Text("Difficulty")
 				.font(.largeTitle)
 				.foregroundColor(.white)
@@ -153,11 +147,9 @@ struct D10View: View
 				.minimumScaleFactor(0.2)
 		}
 	}
-	
-	private var clearButton: some View
-	{
-		Button(action: clear)
-		{
+
+	private var clearButton: some View {
+		Button(action: clear) {
 			Text("Clear")
 				.font(.title)
 				.frame(maxWidth: .infinity, maxHeight: 50)
@@ -167,41 +159,34 @@ struct D10View: View
 		.buttonStyle(.borderedProminent)
 		.tint(color2)
 	}
-	
-	private func clear()
-	{
+
+	private func clear() {
 		diceValue = 0
 		difficultyValue = 0
 		successesValue = 0
 		diceString = ""
 		difficultyString = ""
 		successesString = ""
-		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1)
-		{
+		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
 			diceString = "0"
 			difficultyString = "0"
 			successesString = "0"
 		}
 	}
-	
-	private func addValueToSide (buttonValue: Int)
-	{
-		if (selected == 1)
-		{
+
+	private func addValueToSide(buttonValue: Int) {
+		if selected == 1 {
 			diceValue = buttonValue
 			diceString = (String(diceValue))
 		}
-		if (selected == 2)
-		{
+		if selected == 2 {
 			difficultyValue = buttonValue
 			difficultyString = (String(difficultyValue))
 		}
 	}
-	
-	private func numberButton(_ digit: Int) -> some View
-	{
-		Button(action: {addValueToSide(buttonValue: digit)})
-		{
+
+	private func numberButton(_ digit: Int) -> some View {
+		Button(action: { addValueToSide(buttonValue: digit) }) {
 			Text(String(digit))
 				.font(.title)
 				.frame(maxWidth: .infinity, maxHeight: 50)
@@ -211,13 +196,10 @@ struct D10View: View
 		.buttonStyle(.borderedProminent)
 		.tint(color1)
 	}
-	
-	private var diceButton: some View
-	{
-		if (selected == 1)
-		{
-			Button(action: setDice)
-			{
+
+	private var diceButton: some View {
+		if selected == 1 {
+			Button(action: setDice) {
 				Text("Dice")
 					.font(.title)
 					.frame(maxWidth: .infinity, maxHeight: 50)
@@ -226,11 +208,8 @@ struct D10View: View
 			}
 			.buttonStyle(.borderedProminent)
 			.tint(color3)
-		}
-		else
-		{
-			Button(action: setDice)
-			{
+		} else {
+			Button(action: setDice) {
 				Text("Dice")
 					.font(.title)
 					.frame(maxWidth: .infinity, maxHeight: 50)
@@ -241,18 +220,14 @@ struct D10View: View
 			.tint(color1)
 		}
 	}
-	
-	private func setDice()
-	{
+
+	private func setDice() {
 		selected = 1
 	}
-	
-	private var difficultyButton: some View
-	{
-		if (selected == 2)
-		{
-			Button(action: setDifficulty)
-			{
+
+	private var difficultyButton: some View {
+		if selected == 2 {
+			Button(action: setDifficulty) {
 				Text("Difficulty")
 					.font(.title)
 					.frame(maxWidth: .infinity, maxHeight: 50)
@@ -261,11 +236,8 @@ struct D10View: View
 			}
 			.buttonStyle(.borderedProminent)
 			.tint(color3)
-		}
-		else
-		{
-			Button(action: setDifficulty)
-			{
+		} else {
+			Button(action: setDifficulty) {
 				Text("Difficulty")
 					.font(.title)
 					.frame(maxWidth: .infinity, maxHeight: 50)
@@ -276,16 +248,13 @@ struct D10View: View
 			.tint(color1)
 		}
 	}
-	
-	private func setDifficulty()
-	{
+
+	private func setDifficulty() {
 		selected = 2
 	}
-	
-	private var rollButton: some View
-	{
-		Button(action: roll)
-		{
+
+	private var rollButton: some View {
+		Button(action: roll) {
 			Text("Roll")
 				.font(.title)
 				.frame(maxWidth: .infinity, maxHeight: 50)
@@ -295,31 +264,22 @@ struct D10View: View
 		.buttonStyle(.borderedProminent)
 		.tint(color2)
 	}
-	
-	private func roll()
-	{
-		if ((diceValue != 0) && (difficultyValue != 0))
-		{
+
+	private func roll() {
+		if (diceValue != 0) && (difficultyValue != 0) {
 			successesValue = 0
-			for _ in 1...diceValue
-			{
+			for _ in 1...diceValue {
 				let roll = Int.random(in: 1...10)
-				if (roll == 1)
-				{
+				if roll == 1 {
 					successesValue = successesValue - 1
-				}
-				else if (roll == 10)
-				{
+				} else if roll == 10 {
 					successesValue = successesValue + 2
-				}
-				else if (roll >= difficultyValue)
-				{
+				} else if roll >= difficultyValue {
 					successesValue = successesValue + 1
 				}
 			}
 			successesString = ""
-			DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1)
-			{
+			DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
 				successesString = String(successesValue)
 			}
 		}
