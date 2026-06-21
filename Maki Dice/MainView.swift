@@ -98,7 +98,6 @@ struct MainView: View {
 			}
 			.padding(.horizontal)
 			.background(.black)
-			.preferredColorScheme(.dark)
 		}
 	}
 

@@ -108,7 +108,6 @@ struct D10View: View {
 				.padding(.vertical)
 			}
 			.background(.black)
-			.preferredColorScheme(.dark)
 		}
 	}
 
