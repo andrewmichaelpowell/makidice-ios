@@ -13,24 +13,10 @@ struct D10View: View {
 	@State private var successesString: String = "0"
 	@State private var successesValue: Int = 0
 
-	let color1 = Color(
-		red: 36 / 255.0,
-		green: 36 / 255.0,
-		blue: 40 / 255.0,
-		opacity: 1.0
-	)
-	let color2 = Color(
-		red: 255 / 255.0,
-		green: 146 / 255.0,
-		blue: 48 / 255.0,
-		opacity: 1.0
-	)
-	let color3 = Color(
-		red: 2 / 255.0,
-		green: 211 / 255.0,
-		blue: 223 / 255.0,
-		opacity: 1.0
-	)
+	@Environment(\.colorScheme) private var colorScheme
+	private var primaryButtonTint: Color {
+		colorScheme == .dark ? Color(.systemGray5) : .secondary
+	}
 
 	var body: some View {
 		NavigationStack {
@@ -40,7 +26,7 @@ struct D10View: View {
 					diceLabel
 					Text(diceString)
 						.font(.largeTitle)
-						.foregroundColor(.white)
+						.foregroundColor(Color(.label))
 						.frame(maxWidth: .infinity, alignment: .trailing)
 						.lineLimit(1)
 						.minimumScaleFactor(0.2)
@@ -50,7 +36,7 @@ struct D10View: View {
 					difficultyLabel
 					Text(difficultyString)
 						.font(.largeTitle)
-						.foregroundColor(.white)
+						.foregroundColor(Color(.label))
 						.frame(maxWidth: .infinity, alignment: .trailing)
 						.lineLimit(1)
 						.minimumScaleFactor(0.2)
@@ -59,13 +45,13 @@ struct D10View: View {
 				HStack {
 					Text("Successes")
 						.font(.largeTitle)
-						.foregroundColor(.white)
+						.foregroundColor(Color(.label))
 						.frame(maxWidth: .infinity, alignment: .leading)
 						.lineLimit(1)
 						.minimumScaleFactor(0.2)
 					Text(successesString)
 						.font(.largeTitle)
-						.foregroundColor(.white)
+						.foregroundColor(Color(.label))
 						.frame(maxWidth: .infinity, alignment: .trailing)
 						.lineLimit(1)
 						.minimumScaleFactor(0.2)
@@ -107,7 +93,6 @@ struct D10View: View {
 				}
 				.padding(.vertical)
 			}
-			.background(.black)
 		}
 	}
 
@@ -115,14 +100,14 @@ struct D10View: View {
 		if selected == 1 {
 			Text("Dice")
 				.font(.largeTitle)
-				.foregroundColor(color3)
+				.foregroundColor(Color(.teal))
 				.frame(maxWidth: .infinity, alignment: .leading)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		} else {
 			Text("Dice")
 				.font(.largeTitle)
-				.foregroundColor(.white)
+				.foregroundColor(Color(.label))
 				.frame(maxWidth: .infinity, alignment: .leading)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
@@ -133,14 +118,14 @@ struct D10View: View {
 		if selected == 2 {
 			Text("Difficulty")
 				.font(.largeTitle)
-				.foregroundColor(color3)
+				.foregroundColor(Color(.teal))
 				.frame(maxWidth: .infinity, alignment: .leading)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		} else {
 			Text("Difficulty")
 				.font(.largeTitle)
-				.foregroundColor(.white)
+				.foregroundColor(Color(.label))
 				.frame(maxWidth: .infinity, alignment: .leading)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
@@ -156,7 +141,7 @@ struct D10View: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(color2)
+		.tint(Color(.orange))
 	}
 
 	private func clear() {
@@ -193,7 +178,7 @@ struct D10View: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(color1)
+		.tint(primaryButtonTint)
 	}
 
 	private var diceButton: some View {
@@ -206,7 +191,7 @@ struct D10View: View {
 					.minimumScaleFactor(0.2)
 			}
 			.buttonStyle(.borderedProminent)
-			.tint(color3)
+			.tint(Color(.teal))
 		} else {
 			Button(action: setDice) {
 				Text("Dice")
@@ -216,7 +201,7 @@ struct D10View: View {
 					.minimumScaleFactor(0.2)
 			}
 			.buttonStyle(.borderedProminent)
-			.tint(color1)
+			.tint(primaryButtonTint)
 		}
 	}
 
@@ -234,7 +219,7 @@ struct D10View: View {
 					.minimumScaleFactor(0.2)
 			}
 			.buttonStyle(.borderedProminent)
-			.tint(color3)
+			.tint(Color(.teal))
 		} else {
 			Button(action: setDifficulty) {
 				Text("Difficulty")
@@ -244,7 +229,7 @@ struct D10View: View {
 					.minimumScaleFactor(0.2)
 			}
 			.buttonStyle(.borderedProminent)
-			.tint(color1)
+			.tint(primaryButtonTint)
 		}
 	}
 
@@ -261,7 +246,7 @@ struct D10View: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(color2)
+		.tint(Color(.orange))
 	}
 
 	private func roll() {

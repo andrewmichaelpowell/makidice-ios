@@ -4,40 +4,25 @@
 import SwiftUI
 
 struct MainView: View {
-
 	@State private var diceNumber: String = ""
 	@State private var diceType: String = ""
 	@State private var editSide: Int = 1
 	@State private var resetInput: Int = 1
 	@State private var resultString: String = "0"
 	@State private var resultValue: Int = 0
-
-	let color1 = Color(
-		red: 36 / 255.0,
-		green: 36 / 255.0,
-		blue: 40 / 255.0,
-		opacity: 1.0
-	)
-	let color2 = Color(
-		red: 255 / 255.0,
-		green: 146 / 255.0,
-		blue: 48 / 255.0,
-		opacity: 1.0
-	)
-	let color3 = Color(
-		red: 2 / 255.0,
-		green: 211 / 255.0,
-		blue: 223 / 255.0,
-		opacity: 1.0
-	)
-
+	
+	@Environment(\.colorScheme) private var colorScheme
+	private var primaryButtonTint: Color {
+		colorScheme == .dark ? Color(.systemGray5) : .secondary
+	}
+	
 	var body: some View {
 		NavigationStack {
 			VStack {
 				Spacer()
 				Text(resultString)
 					.font(.largeTitle)
-					.foregroundColor(.white)
+					.foregroundColor(Color(.label))
 					.frame(maxWidth: .infinity, alignment: .trailing)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
@@ -63,7 +48,7 @@ struct MainView: View {
 								.minimumScaleFactor(0.2)
 						}
 						.buttonStyle(.borderedProminent)
-						.tint(color3)
+						.tint(Color(.teal))
 					}
 				}
 				.padding(.vertical)
@@ -97,7 +82,6 @@ struct MainView: View {
 				.padding(.vertical)
 			}
 			.padding(.horizontal)
-			.background(.black)
 		}
 	}
 
@@ -110,7 +94,7 @@ struct MainView: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(color1)
+		.tint(primaryButtonTint)
 	}
 
 	private func quickRoll(quickDiceType: Int) {
@@ -130,7 +114,7 @@ struct MainView: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(color2)
+		.tint(Color(.orange))
 	}
 
 	private func clear() {
@@ -186,7 +170,7 @@ struct MainView: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(color1)
+		.tint(primaryButtonTint)
 	}
 
 	private var zeroButton: some View {
@@ -198,7 +182,7 @@ struct MainView: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(color1)
+		.tint(primaryButtonTint)
 	}
 
 	private func zero() {
@@ -223,7 +207,7 @@ struct MainView: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(color2)
+		.tint(Color(.orange))
 	}
 
 	private func d() {
@@ -242,7 +226,7 @@ struct MainView: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(color2)
+		.tint(Color(.orange))
 	}
 
 	private func roll() {
