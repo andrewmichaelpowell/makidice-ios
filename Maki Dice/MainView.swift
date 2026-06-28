@@ -91,7 +91,7 @@ struct MainView: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(Color(.systemGray5))
+		.tint(Color(.secondarySystemBackground))
 	}
 
 	private func quickRoll(quickDiceType: Int) {
@@ -169,7 +169,7 @@ struct MainView: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(Color(.systemGray5))
+		.tint(Color(.secondarySystemBackground))
 	}
 
 	private var zeroButton: some View {
@@ -182,7 +182,7 @@ struct MainView: View {
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(Color(.systemGray5))
+		.tint(Color(.secondarySystemBackground))
 	}
 
 	private func zero() {
