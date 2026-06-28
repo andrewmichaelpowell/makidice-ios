@@ -13,11 +13,6 @@ struct D10View: View {
 	@State private var successesString: String = "0"
 	@State private var successesValue: Int = 0
 
-	@Environment(\.colorScheme) private var colorScheme
-	private var primaryButtonTint: Color {
-		colorScheme == .dark ? Color(.systemGray5) : .secondary
-	}
-
 	var body: some View {
 		NavigationStack {
 			VStack {
@@ -136,6 +131,7 @@ struct D10View: View {
 		Button(action: clear) {
 			Text("Clear")
 				.font(.title)
+				.foregroundColor(Color(.label))
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
@@ -173,12 +169,13 @@ struct D10View: View {
 		Button(action: { addValueToSide(buttonValue: digit) }) {
 			Text(String(digit))
 				.font(.title)
+				.foregroundColor(Color(.label))
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(primaryButtonTint)
+		.tint(Color(.systemGray5))
 	}
 
 	private var diceButton: some View {
@@ -186,6 +183,7 @@ struct D10View: View {
 			Button(action: setDice) {
 				Text("Dice")
 					.font(.title)
+					.foregroundColor(Color(.label))
 					.frame(maxWidth: .infinity, maxHeight: 50)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
@@ -196,12 +194,13 @@ struct D10View: View {
 			Button(action: setDice) {
 				Text("Dice")
 					.font(.title)
+					.foregroundColor(Color(.label))
 					.frame(maxWidth: .infinity, maxHeight: 50)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
 			.buttonStyle(.borderedProminent)
-			.tint(primaryButtonTint)
+			.tint(Color(.systemGray5))
 		}
 	}
 
@@ -214,6 +213,7 @@ struct D10View: View {
 			Button(action: setDifficulty) {
 				Text("Difficulty")
 					.font(.title)
+					.foregroundColor(Color(.label))
 					.frame(maxWidth: .infinity, maxHeight: 50)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
@@ -224,12 +224,13 @@ struct D10View: View {
 			Button(action: setDifficulty) {
 				Text("Difficulty")
 					.font(.title)
+					.foregroundColor(Color(.label))
 					.frame(maxWidth: .infinity, maxHeight: 50)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
 			.buttonStyle(.borderedProminent)
-			.tint(primaryButtonTint)
+			.tint(Color(.systemGray5))
 		}
 	}
 
@@ -241,6 +242,7 @@ struct D10View: View {
 		Button(action: roll) {
 			Text("Roll")
 				.font(.title)
+				.foregroundColor(Color(.label))
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)

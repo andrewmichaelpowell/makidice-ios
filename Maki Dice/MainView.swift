@@ -11,11 +11,6 @@ struct MainView: View {
 	@State private var resultString: String = "0"
 	@State private var resultValue: Int = 0
 	
-	@Environment(\.colorScheme) private var colorScheme
-	private var primaryButtonTint: Color {
-		colorScheme == .dark ? Color(.systemGray5) : .secondary
-	}
-	
 	var body: some View {
 		NavigationStack {
 			VStack {
@@ -43,6 +38,7 @@ struct MainView: View {
 						NavigationLink(destination: D10View()) {
 							Text("D10")
 								.font(.title)
+								.foregroundColor(Color(.label))
 								.frame(maxWidth: .infinity, maxHeight: 50)
 								.lineLimit(1)
 								.minimumScaleFactor(0.2)
@@ -89,12 +85,13 @@ struct MainView: View {
 		Button(action: { quickRoll(quickDiceType: digit) }) {
 			Text("1d" + String(digit))
 				.font(.title)
+				.foregroundColor(Color(.label))
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(primaryButtonTint)
+		.tint(Color(.systemGray5))
 	}
 
 	private func quickRoll(quickDiceType: Int) {
@@ -109,6 +106,7 @@ struct MainView: View {
 		Button(action: clear) {
 			Text("Clear")
 				.font(.title)
+				.foregroundColor(Color(.label))
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
@@ -165,24 +163,26 @@ struct MainView: View {
 		Button(action: { appendDigit(buttonValue: digit) }) {
 			Text(String(digit))
 				.font(.title)
+				.foregroundColor(Color(.label))
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(primaryButtonTint)
+		.tint(Color(.systemGray5))
 	}
 
 	private var zeroButton: some View {
 		Button(action: zero) {
 			Text("0")
 				.font(.title)
+				.foregroundColor(Color(.label))
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
 		.buttonStyle(.borderedProminent)
-		.tint(primaryButtonTint)
+		.tint(Color(.systemGray5))
 	}
 
 	private func zero() {
@@ -202,6 +202,7 @@ struct MainView: View {
 		Button(action: d) {
 			Text("d")
 				.font(.title)
+				.foregroundColor(Color(.label))
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
@@ -221,6 +222,7 @@ struct MainView: View {
 		Button(action: roll) {
 			Text("Roll")
 				.font(.title)
+				.foregroundColor(Color(.label))
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
