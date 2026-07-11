@@ -96,6 +96,10 @@ struct MainView: View {
 
 	private func quickRoll(quickDiceType: Int) {
 		resultValue = Int.random(in: 1...quickDiceType)
+		editSide = 1
+		resetInput = 1
+		diceNumber = ""
+		diceType = ""
 		resultString = ""
 		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
 			resultString = String(resultValue)
