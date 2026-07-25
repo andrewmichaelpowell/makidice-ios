@@ -8,7 +8,7 @@ struct MainView: View {
 	@State private var diceType: String = ""
 	@State private var editSide: Int = 1
 	@State private var resetInput: Int = 1
-	@State private var resultString: String = "0"
+	@State private var resultString: String = ""
 	@State private var resultValue: Int = 0
 	
 	var body: some View {
@@ -98,8 +98,8 @@ struct MainView: View {
 		resultValue = Int.random(in: 1...quickDiceType)
 		editSide = 1
 		resetInput = 1
-		diceNumber = ""
-		diceType = ""
+		diceNumber = "1"
+		diceType = String(quickDiceType)
 		resultString = ""
 		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
 			resultString = String(resultValue)
@@ -124,9 +124,6 @@ struct MainView: View {
 		diceNumber = ""
 		diceType = ""
 		resultString = ""
-		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-			resultString = "0"
-		}
 	}
 
 	private func setRight(buttonValue: Int) {

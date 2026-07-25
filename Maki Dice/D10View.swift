@@ -5,12 +5,12 @@ import SwiftUI
 
 struct D10View: View {
 
-	@State private var diceString: String = "0"
+	@State private var diceString: String = ""
 	@State private var diceValue: Int = 0
-	@State private var difficultyString: String = "0"
+	@State private var difficultyString: String = ""
 	@State private var difficultyValue: Int = 0
 	@State private var selected: Int = 1
-	@State private var successesString: String = "0"
+	@State private var successesString: String = ""
 	@State private var successesValue: Int = 0
 
 	var body: some View {
@@ -147,11 +147,6 @@ struct D10View: View {
 		diceString = ""
 		difficultyString = ""
 		successesString = ""
-		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-			diceString = "0"
-			difficultyString = "0"
-			successesString = "0"
-		}
 	}
 
 	private func addValueToSide(buttonValue: Int) {
