@@ -4,6 +4,7 @@
 import SwiftUI
 
 struct D10View: View {
+	@Environment(\.dismiss) private var dismiss
 
 	@State private var diceString: String = ""
 	@State private var diceValue: Int = 0
@@ -16,6 +17,11 @@ struct D10View: View {
 	var body: some View {
 		NavigationStack {
 			VStack {
+				HStack {
+					backButton
+					Spacer()
+				}
+				.padding(.horizontal)
 				Spacer()
 				HStack {
 					diceLabel
@@ -89,6 +95,20 @@ struct D10View: View {
 				.padding(.vertical)
 			}
 		}
+		.toolbar(.hidden, for: .navigationBar)
+		.navigationBarBackButtonHidden(true)
+	}
+
+	private var backButton: some View {
+		Button(action: { dismiss() }) {
+			Image(systemName: "chevron.left")
+				.font(.title)
+				.foregroundColor(Color(.label))
+				.frame(width: 30, height: 30)
+		}
+		.buttonStyle(.borderedProminent)
+		.buttonBorderShape(.circle)
+		.tint(Color(.secondarySystemBackground))
 	}
 
 	private var diceLabel: some View {
