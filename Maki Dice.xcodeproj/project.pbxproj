@@ -325,7 +325,11 @@
 					"@executable_path/Frameworks",
 				);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				MARKETING_VERSION = 2026.10.30;
+=======
+				MARKETING_VERSION = 2026.10.22;
+>>>>>>> parent of e84d059 (Glass effect)
 =======
 				MARKETING_VERSION = 2026.10.22;
 >>>>>>> parent of e84d059 (Glass effect)
@@ -370,7 +374,11 @@
 					"@executable_path/Frameworks",
 				);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				MARKETING_VERSION = 2026.10.30;
+=======
+				MARKETING_VERSION = 2026.10.22;
+>>>>>>> parent of e84d059 (Glass effect)
 =======
 				MARKETING_VERSION = 2026.10.22;
 >>>>>>> parent of e84d059 (Glass effect)
