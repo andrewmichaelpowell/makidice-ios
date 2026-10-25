@@ -136,7 +136,8 @@ struct D10View: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.diceButtonStyle(tint: Color(.orange))
+		.buttonStyle(.borderedProminent)
+		.tint(Color(.orange))
 	}
 
 	private func clear() {
@@ -168,7 +169,8 @@ struct D10View: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.diceButtonStyle()
+		.buttonStyle(.borderedProminent)
+		.tint(Color(.secondarySystemBackground))
 	}
 
 	private var diceButton: some View {
@@ -181,7 +183,8 @@ struct D10View: View {
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
-			.diceButtonStyle(tint: Color(.teal))
+			.buttonStyle(.borderedProminent)
+			.tint(Color(.teal))
 		} else {
 			Button(action: setDice) {
 				Text("Dice")
@@ -191,7 +194,8 @@ struct D10View: View {
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
-			.diceButtonStyle()
+			.buttonStyle(.borderedProminent)
+			.tint(Color(.secondarySystemBackground))
 		}
 	}
 
@@ -209,7 +213,8 @@ struct D10View: View {
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
-			.diceButtonStyle(tint: Color(.teal))
+			.buttonStyle(.borderedProminent)
+			.tint(Color(.teal))
 		} else {
 			Button(action: setDifficulty) {
 				Text("Difficulty")
@@ -219,7 +224,8 @@ struct D10View: View {
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
-			.diceButtonStyle()
+			.buttonStyle(.borderedProminent)
+			.tint(Color(.secondarySystemBackground))
 		}
 	}
 
@@ -236,7 +242,8 @@ struct D10View: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.diceButtonStyle(tint: Color(.orange))
+		.buttonStyle(.borderedProminent)
+		.tint(Color(.orange))
 	}
 
 	private func roll() {
