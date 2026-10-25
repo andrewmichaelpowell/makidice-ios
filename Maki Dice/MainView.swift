@@ -43,7 +43,8 @@ struct MainView: View {
 								.lineLimit(1)
 								.minimumScaleFactor(0.2)
 						}
-						.diceButtonStyle(tint: Color(.teal))
+						.buttonStyle(.borderedProminent)
+						.tint(Color(.teal))
 					}
 				}
 				.padding(.vertical)
@@ -89,7 +90,8 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.diceButtonStyle()
+		.buttonStyle(.borderedProminent)
+		.tint(Color(.secondarySystemBackground))
 	}
 
 	private func quickRoll(quickDiceType: Int) {
@@ -113,7 +115,8 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.diceButtonStyle(tint: Color(.orange))
+		.buttonStyle(.borderedProminent)
+		.tint(Color(.orange))
 	}
 
 	private func clear() {
@@ -166,7 +169,8 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.diceButtonStyle()
+		.buttonStyle(.borderedProminent)
+		.tint(Color(.secondarySystemBackground))
 	}
 
 	private var zeroButton: some View {
@@ -178,7 +182,8 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.diceButtonStyle()
+		.buttonStyle(.borderedProminent)
+		.tint(Color(.secondarySystemBackground))
 	}
 
 	private func zero() {
@@ -203,7 +208,8 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.diceButtonStyle(tint: Color(.orange))
+		.buttonStyle(.borderedProminent)
+		.tint(Color(.orange))
 	}
 
 	private func d() {
@@ -222,7 +228,8 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.diceButtonStyle(tint: Color(.orange))
+		.buttonStyle(.borderedProminent)
+		.tint(Color(.orange))
 	}
 
 	private func roll() {
