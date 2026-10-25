@@ -324,7 +324,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2026.10.30;
+				MARKETING_VERSION = 2026.10.24;
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.andrewmichaelpowell.makidice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -365,7 +365,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2026.10.30;
+				MARKETING_VERSION = 2026.10.24;
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.andrewmichaelpowell.makidice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
