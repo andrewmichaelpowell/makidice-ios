@@ -10,17 +10,19 @@ struct MainView: View {
 	@State private var resetInput: Int = 1
 	@State private var resultString: String = ""
 	@State private var resultValue: Int = 0
+	@State private var topInset: CGFloat = 0
 	
 	var body: some View {
 		NavigationStack {
 			VStack {
 				Spacer()
-				Text(resultString)
+				Text(resultString.isEmpty ? " " : resultString)
 					.font(.largeTitle)
 					.foregroundColor(Color(.label))
 					.frame(maxWidth: .infinity, alignment: .trailing)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
+					.padding(.top, topInset == 0 ? 20 : 0)
 				VStack {
 					HStack {
 						quickButton(4)
@@ -78,6 +80,11 @@ struct MainView: View {
 				.padding(.vertical)
 			}
 			.padding(.horizontal)
+			.onGeometryChange(for: CGFloat.self) { proxy in
+				proxy.safeAreaInsets.top
+			} action: { newValue in
+				topInset = newValue
+			}
 		}
 	}
 

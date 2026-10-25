@@ -13,6 +13,7 @@ struct D10View: View {
 	@State private var selected: Int = 1
 	@State private var successesString: String = ""
 	@State private var successesValue: Int = 0
+	@State private var topInset: CGFloat = 0
 
 	var body: some View {
 		NavigationStack {
@@ -22,6 +23,7 @@ struct D10View: View {
 					Spacer()
 				}
 				.padding(.horizontal)
+				.padding(.top, topInset == 0 ? 20 : 0)
 				Spacer()
 				HStack {
 					diceLabel
@@ -58,41 +60,46 @@ struct D10View: View {
 						.minimumScaleFactor(0.2)
 				}
 				.padding(.horizontal)
-				HStack {
-					diceButton
-					difficultyButton
+				VStack(spacing: 8) {
+					HStack {
+						diceButton
+						difficultyButton
+					}
+					Color.clear
+						.frame(height: 24)
+					HStack {
+						numberButton(1)
+						numberButton(2)
+						numberButton(3)
+					}
+					HStack {
+						numberButton(4)
+						numberButton(5)
+						numberButton(6)
+					}
+					HStack {
+						numberButton(7)
+						numberButton(8)
+						numberButton(9)
+					}
+					HStack {
+						clearButton
+						numberButton(10)
+						rollButton
+					}
 				}
-				.padding()
-				VStack {
-				}
-				.padding(.vertical, 4)
-				HStack {
-					numberButton(1)
-					numberButton(2)
-					numberButton(3)
-				}
+				.frame(maxHeight: 314)
+				.layoutPriority(1)
 				.padding(.horizontal)
-				HStack {
-					numberButton(4)
-					numberButton(5)
-					numberButton(6)
-				}
-				.padding(.horizontal)
-				HStack {
-					numberButton(7)
-					numberButton(8)
-					numberButton(9)
-				}
-				.padding(.horizontal)
-				HStack {
-					clearButton
-					numberButton(10)
-					rollButton
-				}
-				.padding(.horizontal)
+				.padding(.top)
 				VStack {
 				}
 				.padding(.vertical)
+			}
+			.onGeometryChange(for: CGFloat.self) { proxy in
+				proxy.safeAreaInsets.top
+			} action: { newValue in
+				topInset = newValue
 			}
 		}
 		.toolbar(.hidden, for: .navigationBar)
@@ -152,7 +159,7 @@ struct D10View: View {
 			Text("Clear")
 				.font(.title)
 				.foregroundColor(Color(.label))
-				.frame(maxWidth: .infinity, maxHeight: 50)
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
@@ -185,7 +192,7 @@ struct D10View: View {
 			Text(String(digit))
 				.font(.title)
 				.foregroundColor(Color(.label))
-				.frame(maxWidth: .infinity, maxHeight: 50)
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
@@ -199,7 +206,7 @@ struct D10View: View {
 				Text("Dice")
 					.font(.title)
 					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: 50)
+					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
@@ -210,7 +217,7 @@ struct D10View: View {
 				Text("Dice")
 					.font(.title)
 					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: 50)
+					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
@@ -229,7 +236,7 @@ struct D10View: View {
 				Text("Difficulty")
 					.font(.title)
 					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: 50)
+					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
@@ -240,7 +247,7 @@ struct D10View: View {
 				Text("Difficulty")
 					.font(.title)
 					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: 50)
+					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
@@ -258,7 +265,7 @@ struct D10View: View {
 			Text("Roll")
 				.font(.title)
 				.foregroundColor(Color(.label))
-				.frame(maxWidth: .infinity, maxHeight: 50)
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
