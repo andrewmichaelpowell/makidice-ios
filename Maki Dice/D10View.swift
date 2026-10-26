@@ -88,7 +88,6 @@ struct D10View: View {
 						rollButton
 					}
 				}
-				.frame(maxHeight: 314)
 				.layoutPriority(1)
 				.padding(.horizontal)
 				.padding(.top)
@@ -159,7 +158,7 @@ struct D10View: View {
 			Text("Clear")
 				.font(.title)
 				.foregroundColor(Color(.label))
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
+				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
@@ -192,7 +191,7 @@ struct D10View: View {
 			Text(String(digit))
 				.font(.title)
 				.foregroundColor(Color(.label))
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
+				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
@@ -206,7 +205,7 @@ struct D10View: View {
 				Text("Dice")
 					.font(.title)
 					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.frame(maxWidth: .infinity, maxHeight: 50)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
@@ -217,7 +216,7 @@ struct D10View: View {
 				Text("Dice")
 					.font(.title)
 					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.frame(maxWidth: .infinity, maxHeight: 50)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
@@ -236,7 +235,7 @@ struct D10View: View {
 				Text("Difficulty")
 					.font(.title)
 					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.frame(maxWidth: .infinity, maxHeight: 50)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
@@ -247,7 +246,7 @@ struct D10View: View {
 				Text("Difficulty")
 					.font(.title)
 					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.frame(maxWidth: .infinity, maxHeight: 50)
 					.lineLimit(1)
 					.minimumScaleFactor(0.2)
 			}
@@ -265,7 +264,7 @@ struct D10View: View {
 			Text("Roll")
 				.font(.title)
 				.foregroundColor(Color(.label))
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
+				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
