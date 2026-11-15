@@ -4,8 +4,6 @@
 import SwiftUI
 
 struct D10View: View {
-	@Environment(\.dismiss) private var dismiss
-
 	@State private var diceString: String = ""
 	@State private var diceValue: Int = 0
 	@State private var difficultyString: String = ""
@@ -13,144 +11,89 @@ struct D10View: View {
 	@State private var selected: Int = 1
 	@State private var successesString: String = ""
 	@State private var successesValue: Int = 0
-	@State private var topInset: CGFloat = 0
 
 	var body: some View {
-		NavigationStack {
+		VStack {
+			Spacer()
+			HStack {
+				label("Dice")
+				Text(diceString)
+					.font(.largeTitle)
+					.foregroundColor(Color(.label))
+					.frame(maxWidth: .infinity, alignment: .trailing)
+					.lineLimit(1)
+					.minimumScaleFactor(0.2)
+			}
+			.padding(.horizontal)
+			HStack {
+				label("Difficulty")
+				Text(difficultyString)
+					.font(.largeTitle)
+					.foregroundColor(Color(.label))
+					.frame(maxWidth: .infinity, alignment: .trailing)
+					.lineLimit(1)
+					.minimumScaleFactor(0.2)
+			}
+			.padding(.horizontal)
+			HStack {
+				Text("Successes")
+					.font(.largeTitle)
+					.foregroundColor(Color(.label))
+					.frame(maxWidth: .infinity, alignment: .leading)
+					.lineLimit(1)
+					.minimumScaleFactor(0.2)
+				Text(successesString)
+					.font(.largeTitle)
+					.foregroundColor(Color(.label))
+					.frame(maxWidth: .infinity, alignment: .trailing)
+					.lineLimit(1)
+					.minimumScaleFactor(0.2)
+			}
+			.padding(.horizontal)
+			VStack(spacing: 8) {
+				SegmentChooser(
+					selection: $selected,
+					options: [(1, "Dice"), (2, "Difficulty")]
+				)
+				Color.clear
+					.frame(height: 24)
+				HStack {
+					numberButton(1)
+					numberButton(2)
+					numberButton(3)
+				}
+				HStack {
+					numberButton(4)
+					numberButton(5)
+					numberButton(6)
+				}
+				HStack {
+					numberButton(7)
+					numberButton(8)
+					numberButton(9)
+				}
+				HStack {
+					clearButton
+					numberButton(10)
+					rollButton
+				}
+			}
+			.layoutPriority(1)
+			.padding(.horizontal)
+			.padding(.top)
 			VStack {
-				HStack {
-					backButton
-					Spacer()
-				}
-				.padding(.horizontal)
-				.padding(.top, topInset == 0 ? 20 : 0)
-				Spacer()
-				HStack {
-					diceLabel
-					Text(diceString)
-						.font(.largeTitle)
-						.foregroundColor(Color(.label))
-						.frame(maxWidth: .infinity, alignment: .trailing)
-						.lineLimit(1)
-						.minimumScaleFactor(0.2)
-				}
-				.padding(.horizontal)
-				HStack {
-					difficultyLabel
-					Text(difficultyString)
-						.font(.largeTitle)
-						.foregroundColor(Color(.label))
-						.frame(maxWidth: .infinity, alignment: .trailing)
-						.lineLimit(1)
-						.minimumScaleFactor(0.2)
-				}
-				.padding(.horizontal)
-				HStack {
-					Text("Successes")
-						.font(.largeTitle)
-						.foregroundColor(Color(.label))
-						.frame(maxWidth: .infinity, alignment: .leading)
-						.lineLimit(1)
-						.minimumScaleFactor(0.2)
-					Text(successesString)
-						.font(.largeTitle)
-						.foregroundColor(Color(.label))
-						.frame(maxWidth: .infinity, alignment: .trailing)
-						.lineLimit(1)
-						.minimumScaleFactor(0.2)
-				}
-				.padding(.horizontal)
-				VStack(spacing: 8) {
-					HStack {
-						diceButton
-						difficultyButton
-					}
-					Color.clear
-						.frame(height: 24)
-					HStack {
-						numberButton(1)
-						numberButton(2)
-						numberButton(3)
-					}
-					HStack {
-						numberButton(4)
-						numberButton(5)
-						numberButton(6)
-					}
-					HStack {
-						numberButton(7)
-						numberButton(8)
-						numberButton(9)
-					}
-					HStack {
-						clearButton
-						numberButton(10)
-						rollButton
-					}
-				}
-				.layoutPriority(1)
-				.padding(.horizontal)
-				.padding(.top)
-				VStack {
-				}
-				.padding(.vertical)
 			}
-			.onGeometryChange(for: CGFloat.self) { proxy in
-				proxy.safeAreaInsets.top
-			} action: { newValue in
-				topInset = newValue
-			}
-		}
-		.toolbar(.hidden, for: .navigationBar)
-		.navigationBarBackButtonHidden(true)
-	}
-
-	private var backButton: some View {
-		Button(action: { dismiss() }) {
-			Image(systemName: "chevron.left")
-				.font(.title)
-				.foregroundColor(Color(.label))
-				.frame(width: 30, height: 30)
-		}
-		.buttonStyle(.borderedProminent)
-		.buttonBorderShape(.circle)
-		.tint(Color(.secondarySystemBackground))
-	}
-
-	private var diceLabel: some View {
-		if selected == 1 {
-			Text("Dice")
-				.font(.largeTitle)
-				.foregroundColor(Color(red: 4 / 255, green: 80 / 255, blue: 48 / 255))
-				.frame(maxWidth: .infinity, alignment: .leading)
-				.lineLimit(1)
-				.minimumScaleFactor(0.2)
-		} else {
-			Text("Dice")
-				.font(.largeTitle)
-				.foregroundColor(Color(.label))
-				.frame(maxWidth: .infinity, alignment: .leading)
-				.lineLimit(1)
-				.minimumScaleFactor(0.2)
+			.padding(.vertical)
 		}
 	}
 
-	private var difficultyLabel: some View {
-		if selected == 2 {
-			Text("Difficulty")
-				.font(.largeTitle)
-				.foregroundColor(Color(red: 4 / 255, green: 80 / 255, blue: 48 / 255))
-				.frame(maxWidth: .infinity, alignment: .leading)
-				.lineLimit(1)
-				.minimumScaleFactor(0.2)
-		} else {
-			Text("Difficulty")
-				.font(.largeTitle)
-				.foregroundColor(Color(.label))
-				.frame(maxWidth: .infinity, alignment: .leading)
-				.lineLimit(1)
-				.minimumScaleFactor(0.2)
-		}
+	private func label(_ text: LocalizedStringKey) -> some View {
+		Text(text)
+			.font(.largeTitle)
+			.foregroundColor(Color(.label))
+			.frame(maxWidth: .infinity, alignment: .leading)
+			.lineLimit(1)
+			.minimumScaleFactor(0.2)
 	}
 
 	private var clearButton: some View {
@@ -162,8 +105,7 @@ struct D10View: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.buttonStyle(.borderedProminent)
-		.tint(Color(red: 240 / 255, green: 92 / 255, blue: 34 / 255))
+		.glassButton(tint: .makiOrange)
 	}
 
 	private func clear() {
@@ -195,68 +137,7 @@ struct D10View: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.buttonStyle(.borderedProminent)
-		.tint(Color(.secondarySystemBackground))
-	}
-
-	private var diceButton: some View {
-		if selected == 1 {
-			Button(action: setDice) {
-				Text("Dice")
-					.font(.title)
-					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: 50)
-					.lineLimit(1)
-					.minimumScaleFactor(0.2)
-			}
-			.buttonStyle(.borderedProminent)
-			.tint(Color(red: 4 / 255, green: 80 / 255, blue: 48 / 255))
-		} else {
-			Button(action: setDice) {
-				Text("Dice")
-					.font(.title)
-					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: 50)
-					.lineLimit(1)
-					.minimumScaleFactor(0.2)
-			}
-			.buttonStyle(.borderedProminent)
-			.tint(Color(.secondarySystemBackground))
-		}
-	}
-
-	private func setDice() {
-		selected = 1
-	}
-
-	private var difficultyButton: some View {
-		if selected == 2 {
-			Button(action: setDifficulty) {
-				Text("Difficulty")
-					.font(.title)
-					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: 50)
-					.lineLimit(1)
-					.minimumScaleFactor(0.2)
-			}
-			.buttonStyle(.borderedProminent)
-			.tint(Color(red: 4 / 255, green: 80 / 255, blue: 48 / 255))
-		} else {
-			Button(action: setDifficulty) {
-				Text("Difficulty")
-					.font(.title)
-					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, maxHeight: 50)
-					.lineLimit(1)
-					.minimumScaleFactor(0.2)
-			}
-			.buttonStyle(.borderedProminent)
-			.tint(Color(.secondarySystemBackground))
-		}
-	}
-
-	private func setDifficulty() {
-		selected = 2
+		.glassButton()
 	}
 
 	private var rollButton: some View {
@@ -268,8 +149,7 @@ struct D10View: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.buttonStyle(.borderedProminent)
-		.tint(Color(red: 240 / 255, green: 92 / 255, blue: 34 / 255))
+		.glassButton(tint: .makiOrange)
 	}
 
 	private func roll() {

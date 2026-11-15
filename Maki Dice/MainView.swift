@@ -11,80 +11,69 @@ struct MainView: View {
 	@State private var resultString: String = ""
 	@State private var resultValue: Int = 0
 	@State private var topInset: CGFloat = 0
-	
+
 	var body: some View {
-		NavigationStack {
+		VStack {
+			Spacer()
+			Text(resultString.isEmpty ? " " : resultString)
+				.font(.largeTitle)
+				.foregroundColor(Color(.label))
+				.frame(maxWidth: .infinity, alignment: .trailing)
+				.lineLimit(1)
+				.minimumScaleFactor(0.2)
+				.padding(.top, topInset == 0 ? 20 : 0)
+			Grid {
+				GridRow {
+					quickButton(4)
+					quickButton(6)
+					quickButton(8)
+				}
+				GridRow {
+					quickButton(10)
+					quickButton(12)
+					quickButton(20)
+				}
+				GridRow {
+					clearButton
+					quickButton(100)
+					rollButton
+				}
+			}
+			.padding(.vertical)
 			VStack {
-				Spacer()
-				Text(resultString.isEmpty ? " " : resultString)
-					.font(.largeTitle)
-					.foregroundColor(Color(.label))
-					.frame(maxWidth: .infinity, alignment: .trailing)
-					.lineLimit(1)
-					.minimumScaleFactor(0.2)
-					.padding(.top, topInset == 0 ? 20 : 0)
-				VStack {
-					HStack {
-						quickButton(4)
-						quickButton(6)
-						quickButton(8)
-					}
-					HStack {
-						quickButton(10)
-						quickButton(12)
-						quickButton(20)
-					}
-					HStack {
-						clearButton
-						quickButton(100)
-						NavigationLink(destination: D10View()) {
-							Text("D10")
-								.font(.title)
-								.foregroundColor(Color(.label))
-								.frame(maxWidth: .infinity, maxHeight: 50)
-								.lineLimit(1)
-								.minimumScaleFactor(0.2)
-						}
-						.buttonStyle(.borderedProminent)
-						.tint(Color(red: 4 / 255, green: 80 / 255, blue: 48 / 255))
-					}
-				}
-				.padding(.vertical)
-				VStack {
-				}
-				.padding(.vertical, 4)
-				VStack {
-					HStack {
-						numberButton(1)
-						numberButton(2)
-						numberButton(3)
-					}
-					HStack {
-						numberButton(4)
-						numberButton(5)
-						numberButton(6)
-					}
-					HStack {
-						numberButton(7)
-						numberButton(8)
-						numberButton(9)
-					}
-					HStack {
-						dButton
-						zeroButton
-						rollButton
-					}
-				}
-				VStack {
-				}
-				.padding(.vertical)
 			}
-			.padding(.horizontal)
-			.onGeometryChange(for: CGFloat.self) { proxy in
-				proxy.safeAreaInsets.top
-			} action: { newValue in
-				topInset = newValue
+			.padding(.vertical, 4)
+			VStack {
+				HStack {
+					numberButton(1)
+					numberButton(2)
+					numberButton(3)
+				}
+				HStack {
+					numberButton(4)
+					numberButton(5)
+					numberButton(6)
+				}
+				HStack {
+					numberButton(7)
+					numberButton(8)
+					numberButton(9)
+				}
+				HStack {
+					dButton
+					zeroButton
+					rollButton
+				}
 			}
+			VStack {
+			}
+			.padding(.vertical)
+		}
+		.padding(.horizontal)
+		.onGeometryChange(for: CGFloat.self) { proxy in
+			proxy.safeAreaInsets.top
+		} action: { newValue in
+			topInset = newValue
 		}
 	}
 
@@ -97,8 +86,7 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.buttonStyle(.borderedProminent)
-		.tint(Color(.secondarySystemBackground))
+		.glassButton()
 	}
 
 	private func quickRoll(quickDiceType: Int) {
@@ -122,8 +110,7 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.buttonStyle(.borderedProminent)
-		.tint(Color(red: 240 / 255, green: 92 / 255, blue: 34 / 255))
+		.glassButton(tint: .makiOrange)
 	}
 
 	private func clear() {
@@ -176,8 +163,7 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.buttonStyle(.borderedProminent)
-		.tint(Color(.secondarySystemBackground))
+		.glassButton()
 	}
 
 	private var zeroButton: some View {
@@ -189,8 +175,7 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.buttonStyle(.borderedProminent)
-		.tint(Color(.secondarySystemBackground))
+		.glassButton()
 	}
 
 	private func zero() {
@@ -215,8 +200,7 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.buttonStyle(.borderedProminent)
-		.tint(Color(red: 240 / 255, green: 92 / 255, blue: 34 / 255))
+		.glassButton(tint: .makiOrange)
 	}
 
 	private func d() {
@@ -235,8 +219,7 @@ struct MainView: View {
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
 		}
-		.buttonStyle(.borderedProminent)
-		.tint(Color(red: 240 / 255, green: 92 / 255, blue: 34 / 255))
+		.glassButton(tint: .makiOrange)
 	}
 
 	private func roll() {
