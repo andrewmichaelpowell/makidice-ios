@@ -100,7 +100,7 @@ struct D10View: View {
 		Button(action: clear) {
 			Text("Clear")
 				.font(.title)
-				.foregroundColor(Color(.label))
+				.foregroundColor(.white)
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
@@ -144,7 +144,7 @@ struct D10View: View {
 		Button(action: roll) {
 			Text("Roll")
 				.font(.title)
-				.foregroundColor(Color(.label))
+				.foregroundColor(.white)
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)

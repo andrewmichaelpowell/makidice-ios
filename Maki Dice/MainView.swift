@@ -105,7 +105,7 @@ struct MainView: View {
 		Button(action: clear) {
 			Text("Clear")
 				.font(.title)
-				.foregroundColor(Color(.label))
+				.foregroundColor(.white)
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
@@ -195,7 +195,7 @@ struct MainView: View {
 		Button(action: d) {
 			Text("d")
 				.font(.title)
-				.foregroundColor(Color(.label))
+				.foregroundColor(.white)
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)
@@ -214,7 +214,7 @@ struct MainView: View {
 		Button(action: backspace) {
 			Image(systemName: "delete.backward")
 				.font(.title)
-				.foregroundColor(Color(.label))
+				.foregroundColor(.white)
 				.frame(maxWidth: .infinity, maxHeight: 50)
 		}
 		.glassButton(tint: .makiOrange)
@@ -242,7 +242,7 @@ struct MainView: View {
 		Button(action: roll) {
 			Text("Roll")
 				.font(.title)
-				.foregroundColor(Color(.label))
+				.foregroundColor(.white)
 				.frame(maxWidth: .infinity, maxHeight: 50)
 				.lineLimit(1)
 				.minimumScaleFactor(0.2)

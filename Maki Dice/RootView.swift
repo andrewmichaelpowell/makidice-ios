@@ -67,7 +67,7 @@ private struct PageChooser: View {
 			selection = tab
 		} label: {
 			icon()
-				.foregroundStyle(Color.primary)
+				.foregroundStyle(isSelected ? Color.white : Color.primary)
 				.frame(width: Self.itemWidth, height: Self.itemHeight)
 				.background {
 					if isSelected {
