@@ -1,1 +1,0 @@
-Ez a verzió kisebb felhasználói felület fejlesztéseket tartalmaz.
